@@ -17,6 +17,7 @@ import butterknife.BindView;
  * Created by Administrator on 2016/8/10.
  */
 public class RefreshActivity extends Activity {
+
     @BindView(R.id.content_web_view)
     public WebView mWebView;
     @BindView(R.id.refresh)
@@ -46,7 +47,6 @@ public class RefreshActivity extends Activity {
     }
 
     private class ContentWebViewClient extends WebViewClient {
-        // 网页加载完成
         public void onPageFinished(WebView view, String url) {
             super.onPageFinished(view, url);
             if (refresh.isRefreshing()) {

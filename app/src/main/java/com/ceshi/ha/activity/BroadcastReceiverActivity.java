@@ -60,7 +60,7 @@ public class BroadcastReceiverActivity extends AppCompatActivity {
         Intent i = new Intent();
         i.setAction("com.iteye.receiver.action");
         i.putExtra("name", "tom");
-        this.sendBroadcast(i, " com.iteye.permission.receiver ");
+        sendBroadcast(i, " com.iteye.permission.receiver ");
         Log.i("Other", ".send ok!");
     }
 
@@ -103,7 +103,7 @@ public class BroadcastReceiverActivity extends AppCompatActivity {
         //拆分短信内容（手机短信长度限制）
         List<String> divideContents = smsManager.divideMessage(message);
         for (String text : divideContents) {
-//            smsManager.sendTextMessage(phoneNumber, null, text, sentPI, deliverPI);
+            //            smsManager.sendTextMessage(phoneNumber, null, text, sentPI, deliverPI);
         }
     }
 }
