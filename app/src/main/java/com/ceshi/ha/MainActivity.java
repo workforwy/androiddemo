@@ -1,115 +1,92 @@
 package com.ceshi.ha;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.view.KeyEvent;
+import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.Toast;
 
-import com.ceshi.ha.mvp.interfaceview.IMainActivityView;
-import com.ceshi.ha.mvp.compl.MainActivityPresenterCompl;
-import com.ceshi.ha.mvp.presenter.IMainActivityPresenter;
-import com.jerey.animationlib.AnimationHelper;
+import com.ceshi.ha.activity.TestActivity;
+import com.ceshi.ha.adapter.RecycleAdapter;
+import com.ceshi.ha.utils.acp.AcpActivity;
+import com.ceshi.ha.utils.divider.DividerItemDecoration;
+import com.ceshi.ha.view.HtmlActivity;
+import com.ceshi.ha.view.NewActivity;
+import com.ceshi.ha.view.RxAndroid;
+import com.ceshi.ha.view.TabActivity;
+import com.ceshi.ha.view.TakePhotoActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
+import it.gmariotti.recyclerview.adapter.AlphaAnimatorAdapter;
+
 
 /**
- * Created by rex on 2017/3/18 0018.
+ * recycleview
  */
-public class MainActivity extends AppCompatActivity implements IMainActivityView, View.OnClickListener{
-    @BindView(R.id.submit_pro)
-    public ProgressBar progressBar;
-    @BindView(R.id.clean)
-    public Button btn_clean;
-    @BindView(R.id.submit)
-    public Button btn_submit;
-    @BindView(R.id.iv_touxiang)
-    public ImageView touxiang;
+public class MainActivity extends Activity {
 
-    IMainActivityPresenter mainActivityPresenter;
-    List<EditText> editList;
+    private RecyclerView mRecyclerView;
+    private RecycleAdapter mAdapter;
+    private AlphaAnimatorAdapter animatorAdapter;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
-        init();
-        initView();
-
+        setViews();
     }
 
-    @Override
-    public void init() {
-        mainActivityPresenter = new MainActivityPresenterCompl();
-        editList = new ArrayList<>();
+    private void setViews() {
+        mRecyclerView = findViewById(R.id.recyclerview);
+        setLinear(mRecyclerView);
+        mAdapter = new RecycleAdapter(this, getName());
+        animatorAdapter = new AlphaAnimatorAdapter(mAdapter, mRecyclerView);
+        mRecyclerView.setAdapter(animatorAdapter);
+        setListener();
     }
 
-    @Override
-    public void initView() {
-        editList.add((EditText) findViewById(R.id.age));
-        editList.add((EditText) findViewById(R.id.gender));
-        editList.add((EditText) findViewById(R.id.name));
-        editList.add((EditText) findViewById(R.id.hobby));
-        btn_submit.setOnClickListener(this);
-        btn_clean.setOnClickListener(this);
-        progressBar.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-    }
-
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.submit:
-                submitData();
-                AnimationHelper.show(touxiang);
-                break;
-            case R.id.clean:
-                initData();
-                break;
-        }
-    }
-
-    @Override
-    public void submitData() {
-        mainActivityPresenter.submitData(this, editList, progressBar);
-    }
-
-    @Override
-    public void initData() {
-        mainActivityPresenter.initData(editList);
-    }
-
-    long lastkeyBackDown;
-
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        //判断按下的是否是返回键
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            //记录下当前按下返回键的时间
-            long currentTime = System.currentTimeMillis();
-            //两次按下的时间间隔进行判断 ，判断是否是连续按下
-            if (currentTime - lastkeyBackDown > 1500) {
-                Toast.makeText(this, "不是连续按下，再按一下退出应用程序", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(this, "是连续按下，退出应用程序", Toast.LENGTH_SHORT).show();
-                finish();
+    private void setListener() {
+        mAdapter.setOnItemClickListener(new RecycleAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Intent intent = new Intent(MainActivity.this, getData().get(position));
+                startActivity(intent);
             }
-            //重置
-            lastkeyBackDown = currentTime;
-            //ture和false效果一样
-            return false;
+        });
+    }
+
+    /**
+     * 设置竖向
+     */
+    private void setLinear(RecyclerView mRecyclerView) {
+        //设置布局管理器
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
+        // 设置分割线
+        mRecyclerView.addItemDecoration(new DividerItemDecoration(MainActivity.this, DividerItemDecoration.VERTICAL_LIST));
+    }
+
+    private List<Class> getData() {
+        List<Class> mDatas = new ArrayList<>();
+        mDatas.add(HtmlActivity.class);
+        mDatas.add(NewActivity.class);
+        mDatas.add(TabActivity.class);
+        mDatas.add(TakePhotoActivity.class);
+        mDatas.add(AcpActivity.class);
+        mDatas.add(TakePhotoActivity.class);
+        mDatas.add(TestActivity.class);
+        mDatas.add(RxAndroid.class);
+        return mDatas;
+    }
+
+    private List<String> getName() {
+        List<String> mDatas = new ArrayList<>();
+        for (int i = 0; i < getData().size(); i++) {
+            mDatas.add(getData().get(i).getSimpleName());
         }
-        //建议不要动，继承父类的返回结果，因为我们只改变了返回键的点击事件，别的键还是要执行父类的默认方法
-        return super.onKeyDown(keyCode, event);
+        return mDatas;
     }
 }

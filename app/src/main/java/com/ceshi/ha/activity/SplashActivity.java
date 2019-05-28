@@ -10,7 +10,7 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.ceshi.ha.MainActivity;
+import com.ceshi.ha.view.MvpActivity;
 import com.ceshi.ha.R;
 
 /**
@@ -39,7 +39,7 @@ public class SplashActivity extends Activity implements View.OnClickListener {
             super.handleMessage(msg);
             switch (msg.what) {
                 case 0:
-                    Intent intent = new Intent(kaiping, MainActivity.class);
+                    Intent intent = new Intent(kaiping, MvpActivity.class);
                     startActivity(intent);
                     break;
             }

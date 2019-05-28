@@ -36,7 +36,7 @@ public class ProgressBarStuActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.progressbar);
+        setContentView(R.layout.progressbar1);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
         Thread thread = new Thread(new Runnable() {

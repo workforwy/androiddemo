@@ -10,7 +10,7 @@ import android.os.Looper;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.ceshi.ha.MainActivity;
+import com.ceshi.ha.view.MvpActivity;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -97,7 +97,7 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
 
             // 重新启动程序，注释上面的退出程序
             Intent intent = new Intent();
-            intent.setClass(mContext, MainActivity.class);
+            intent.setClass(mContext, MvpActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             mContext.startActivity(intent);
             android.os.Process.killProcess(android.os.Process.myPid());

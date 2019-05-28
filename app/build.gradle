@@ -1,11 +1,11 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 28
     defaultConfig {
         applicationId "com.ceshi.ha"
         minSdkVersion 21
-        targetSdkVersion 27
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -41,23 +41,54 @@ sourceSets {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'com.android.support:appcompat-v7:27.0.0'
-    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
-    implementation 'com.jakewharton:butterknife:8.4.0'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    // 卡片
+    implementation 'com.android.support:cardview-v7:28.0.0'
+    // 约束布局
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    // recyclerview
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
+    // 调试
+    testImplementation 'junit:junit:4.13-beta-3'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    // 注解模块
+    implementation 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    //json
     implementation 'com.alibaba:fastjson:1.1.46.android'
-    implementation 'com.taobao.android:weex_sdk:0.5.1@aar'
+    //动画
     implementation 'com.github.Jerey-Jobs:AnimationHelper:1.0'
+    //富文本
     implementation 'com.github.xymelon:richtext:1.0.4'
+    //事件传递
     implementation 'de.greenrobot:eventbus:3.0.0-beta1'
+    //网络
     implementation 'org.xutils:xutils:3.5.0'
-    implementation 'com.squareup.okhttp3:okhttp:3.9.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.12.1'
     implementation 'com.squareup.retrofit2:retrofit:2.3.0'
     implementation 'eu.the4thfloor.volley:com.android.volley:2015.05.28'
+    //网络请求
+//    implementation 'com.zhouyou:rxeasyhttp:2.0.4'
+
+    // 图片加载
     implementation 'com.squareup.picasso:picasso:2.5.2'
+    // 列表动画
+    implementation 'com.github.gabrielemariotti.recyclerview:recyclerview-animators:0.3.0-SNAPSHOT@aar'
+    // 沉浸式状态栏和标题栏
+    implementation 'com.gyf.barlibrary:barlibrary:2.3.0'
+    // 事件传递
+    implementation 'org.greenrobot:eventbus:3.0.0'
+    // 屏幕适配模块
+    implementation 'com.zhy:autolayout:1.4.5'
+    // 请求权限
+    implementation 'com.mylhyl:acp:1.1.7'
+    // rxjava
+    implementation 'io.reactivex:rxjava:1.0.14'
+    // rxandroid
+    implementation 'io.reactivex:rxandroid:1.0.1'
+
+
 }
 
 

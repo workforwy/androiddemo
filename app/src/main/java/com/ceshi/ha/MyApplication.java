@@ -6,10 +6,8 @@ import android.app.Application;
 import android.content.ComponentName;
 import android.content.Intent;
 
-import com.ceshi.ha.adapter.ImageAdapter;
 import com.ceshi.ha.crashhandler.CrashHandler;
-import com.taobao.weex.InitConfig;
-import com.taobao.weex.WXSDKEngine;
+import com.ceshi.ha.view.MvpActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,14 +32,6 @@ public class MyApplication extends Application {
         // 在application 全集的环境里面
         activityList = new ArrayList<Activity>();
 
-    }
-
-    /**
-     * 初始化WEEX
-     */
-    void WEEX() {
-        InitConfig config = new InitConfig.Builder().setImgAdapter(new ImageAdapter()).build();
-        WXSDKEngine.initialize(this, config);
     }
 
     /**
@@ -74,7 +64,7 @@ public class MyApplication extends Application {
     }
 
     public void stopAppByIntent() {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, MvpActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
     }
 }
