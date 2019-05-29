@@ -1,4 +1,4 @@
-package com.ceshi.ha.viewutils;
+package com.ceshi.ha.views;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

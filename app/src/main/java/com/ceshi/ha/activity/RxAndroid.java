@@ -1,4 +1,4 @@
-package com.ceshi.ha.view;
+package com.ceshi.ha.activity;
 
 import android.annotation.TargetApi;
 import android.graphics.Bitmap;

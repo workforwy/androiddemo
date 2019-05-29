@@ -1,4 +1,4 @@
-package com.ceshi.ha.view;
+package com.ceshi.ha.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;

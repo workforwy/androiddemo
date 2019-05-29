@@ -1,4 +1,4 @@
-package com.ceshi.ha.view;
+package com.ceshi.ha.activity;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;

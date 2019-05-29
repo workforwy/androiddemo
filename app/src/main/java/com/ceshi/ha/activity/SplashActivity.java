@@ -10,7 +10,6 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.ceshi.ha.view.MvpActivity;
 import com.ceshi.ha.R;
 
 /**

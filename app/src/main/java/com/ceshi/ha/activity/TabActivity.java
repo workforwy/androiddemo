@@ -1,4 +1,4 @@
-package com.ceshi.ha.view;
+package com.ceshi.ha.activity;
 
 import android.graphics.Color;
 import android.os.Bundle;

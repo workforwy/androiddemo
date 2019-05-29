@@ -48,11 +48,11 @@
         <activity android:name=".m1card.ReadM1" />
 
         <activity android:name=".utils.acp.AcpActivity" />
-        <activity android:name=".view.HtmlActivity" />
-        <activity android:name=".view.NewActivity" />
-        <activity android:name=".view.TabActivity" />
-        <activity android:name=".view.TakePhotoActivity" />
-        <activity android:name=".view.RxAndroid" />
+        <activity android:name=".activity.HtmlActivity" />
+        <activity android:name=".activity.NewActivity" />
+        <activity android:name=".activity.TabActivity" />
+        <activity android:name=".activity.TakePhotoActivity" />
+        <activity android:name=".activity.RxAndroid" />
 
         <activity
             android:name=".activity.BroadcastReceiverActivity"

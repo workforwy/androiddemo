@@ -73,7 +73,7 @@
         android:visibility="invisible"/>
 
     <!-- 令 shape_type="star"为五角星-->
-    <com.ceshi.ha.viewutils.ShapeImageView
+    <com.ceshi.ha.views.ShapeImageView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_marginTop="10dip"

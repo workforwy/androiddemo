@@ -1,4 +1,4 @@
-package com.ceshi.ha.customview;
+package com.ceshi.ha.views.customview;
 
 import android.app.Dialog;
 import android.content.Context;

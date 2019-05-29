@@ -12,11 +12,11 @@ import com.ceshi.ha.activity.TestActivity;
 import com.ceshi.ha.adapter.RecycleAdapter;
 import com.ceshi.ha.utils.acp.AcpActivity;
 import com.ceshi.ha.utils.divider.DividerItemDecoration;
-import com.ceshi.ha.view.HtmlActivity;
-import com.ceshi.ha.view.NewActivity;
-import com.ceshi.ha.view.RxAndroid;
-import com.ceshi.ha.view.TabActivity;
-import com.ceshi.ha.view.TakePhotoActivity;
+import com.ceshi.ha.activity.HtmlActivity;
+import com.ceshi.ha.activity.NewActivity;
+import com.ceshi.ha.activity.RxAndroid;
+import com.ceshi.ha.activity.TabActivity;
+import com.ceshi.ha.activity.TakePhotoActivity;
 
 import java.util.ArrayList;
 import java.util.List;

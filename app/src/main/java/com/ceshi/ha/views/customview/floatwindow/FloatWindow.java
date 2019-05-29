@@ -1,4 +1,4 @@
-package com.ceshi.ha.customview.floatwindow;
+package com.ceshi.ha.views.customview.floatwindow;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;

@@ -1,4 +1,4 @@
-package com.ceshi.ha.crashhandler;
+package com.ceshi.ha.utils;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,7 +10,7 @@ import android.os.Looper;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.ceshi.ha.view.MvpActivity;
+import com.ceshi.ha.activity.MvpActivity;
 
 import java.io.File;
 import java.io.FileOutputStream;

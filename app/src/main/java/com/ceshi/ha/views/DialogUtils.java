@@ -1,6 +1,7 @@
-package com.ceshi.ha.viewutils;
+package com.ceshi.ha.views;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -13,7 +14,7 @@ import com.ceshi.ha.R;
  * Created by WY on 2017/10/11 0011.
  */
 
-public class DialogUtils extends android.app.Dialog {
+public class DialogUtils extends Dialog {
 
     Context context;
     DialogInterface exitDialog;
