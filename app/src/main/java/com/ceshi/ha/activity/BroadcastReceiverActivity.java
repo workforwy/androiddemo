@@ -38,7 +38,7 @@ public class BroadcastReceiverActivity extends AppCompatActivity {
             long id = savedInstanceState.getLong("id");
         }
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_BEHIND);
-        setContentView(R.layout.test);
+        setContentView(R.layout.activity_receiver);
 
 
         MyReceiver mr = new MyReceiver();

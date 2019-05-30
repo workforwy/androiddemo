@@ -2,6 +2,7 @@ package com.ceshi.ha.views;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -22,15 +23,6 @@ public class DialogUtils extends Dialog {
     public DialogUtils(@NonNull Context context) {
         super(context);
     }
-
-    public DialogUtils(@NonNull Context context, int themeResId) {
-        super(context, themeResId);
-    }
-
-    protected DialogUtils(@NonNull Context context, boolean cancelable, @Nullable OnCancelListener cancelListener) {
-        super(context, cancelable, cancelListener);
-    }
-
 
     private void showMydialog() {
         //        View view = context.getLayoutInflater().inflate(R.layout.dialog_password, null);
@@ -86,5 +78,22 @@ public class DialogUtils extends Dialog {
                     break;
             }
         }
+    }
+
+    public void Progress() {
+        ProgressDialog dialog = new ProgressDialog(context);
+        dialog.setIcon(R.mipmap.ic_launcher);
+        dialog.setTitle("数据正在更新");
+        dialog.setMessage("请稍等。。。。。");
+        dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);//圆形
+        //        dialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);//直线
+        dialog.setButton("暂停", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        dialog.show();
     }
 }

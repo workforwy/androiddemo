@@ -92,7 +92,7 @@ public class LogUtils extends LogData {
 
     public static void checkMainThread() {
         if (Looper.getMainLooper() != Looper.myLooper()) {
-            throw new RuntimeException("Must be main thread");
+            throw new RuntimeException("Must be activity_m1 thread");
         }
     }
 

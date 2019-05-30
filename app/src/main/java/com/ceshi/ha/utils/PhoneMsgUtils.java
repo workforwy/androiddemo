@@ -157,7 +157,7 @@ public class PhoneMsgUtils {
 
   /*
    * 唯一的用户ID：
-   * 例如：IMSI(国际移动用户识别码) for main GSM phone.
+   * 例如：IMSI(国际移动用户识别码) for activity_m1 GSM phone.
    * 需要权限：READ_PHONE_STATE
    */
         tm.getSubscriberId();//String

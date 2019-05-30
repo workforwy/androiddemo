@@ -457,7 +457,7 @@ public class StrUtil {
     }
 
     /**
-     * The main method.
+     * The activity_m1 method.
      *
      * @param args the arguments
      */

@@ -122,7 +122,7 @@ public class PhoneInfosUtils {
         String m_szImei = TelephonyMgr.getDeviceId(); // Requires
 
         // 2 compute DEVICE ID
-        String m_szDevIDShort = "35" + // we make this look like main valid IMEI
+        String m_szDevIDShort = "35" + // we make this look like activity_m1 valid IMEI
                 Build.BOARD.length() % 10 + Build.BRAND.length() % 10 +
                 Build.CPU_ABI.length() % 10 + Build.DEVICE.length() % 10 +
                 Build.DISPLAY.length() % 10 + Build.HOST.length() % 10 +
@@ -164,7 +164,7 @@ public class PhoneInfosUtils {
         String m_szUniqueID = new String();
         for (int i = 0; i < p_md5Data.length; i++) {
             int b = (0xFF & p_md5Data[i]);
-            // if it is main single digit, make sure it have 0 in front (proper
+            // if it is activity_m1 single digit, make sure it have 0 in front (proper
             // padding)
             if (b <= 0xF)
                 m_szUniqueID += "0";

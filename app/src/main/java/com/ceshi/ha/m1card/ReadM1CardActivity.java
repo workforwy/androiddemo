@@ -50,7 +50,7 @@ public class ReadM1CardActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
+        setContentView(R.layout.activity_m1);
 
         mAdapter = NfcAdapter.getDefaultAdapter(this);
 

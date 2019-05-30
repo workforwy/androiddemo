@@ -1,4 +1,4 @@
-package com.ceshi.ha.views.customview.floatwindow;
+package com.ceshi.ha.activity;
 
 import android.app.Activity;
 import android.content.Context;
@@ -13,8 +13,9 @@ import android.view.View.OnTouchListener;
 import android.view.WindowManager;
 
 import com.ceshi.ha.R;
+import com.ceshi.ha.views.FloatWindow;
 
-public class FloatWindowTest extends Activity {
+public class FloatWindowActivity extends Activity {
 
     WindowManager mWindowManager;
     WindowManager.LayoutParams wmParams;
@@ -27,7 +28,7 @@ public class FloatWindowTest extends Activity {
 
         test1();
 
-//        test2();
+        //        test2();
     }
 
     private void test2() {

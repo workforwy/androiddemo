@@ -1,4 +1,4 @@
-package com.ceshi.ha.views.customview;
+package com.ceshi.ha.views;
 
 import android.content.Context;
 import android.graphics.Bitmap;
