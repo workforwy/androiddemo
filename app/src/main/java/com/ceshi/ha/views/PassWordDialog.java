@@ -14,30 +14,33 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ceshi.ha.R;
+import com.ceshi.ha.utils.toast.ToastUtil;
 
 /**
- * Created by rex on 2017/3/22 0022.
+ * 密码对话框
  */
 
-public class MyDialog extends Dialog {
+public class PassWordDialog extends Dialog {
+
     Context context;
     View myView;
+    LinearLayout ll_sendMessageForReset;
 
     TextView tv_dialog_title, tv_panduan, tv_title_pwd, tv_matchFalse, tv_colse_dialog;
     Button bt_colse_dialog, bt_send_captcha, bt_commit;
-    LinearLayout ll_sendMessageForReset;
 
-    EditText[] mArray;
+    private EditText[] mArray;
     private EditText EditText_Pwd1, EditText_Pwd2, EditText_Pwd3, EditText_Pwd4, EditText_Pwd5, EditText_Pwd6,
             EditText_Pwd7, EditText_Pwd8, EditText_Pwd9, EditText_Pwd10, EditText_Pwd11, EditText_Pwd12, ed_captcha;
 
-    public MyDialog(Context context) {
+    public PassWordDialog(Context context) {
         super(context);
     }
 
-    public MyDialog(Context context, int width, int height, View layout, int style) {
+    public PassWordDialog(Context context, int width, int height, View layout, int style) {
         super(context, style);
         setContentView(layout);
         this.context = context;
@@ -108,22 +111,19 @@ public class MyDialog extends Dialog {
         tv_colse_dialog.setOnClickListener(new android.view.View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                MyDialog.this.dismiss();
+                dismiss();
             }
         });
         bt_send_captcha.setOnClickListener(new android.view.View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 String captcha = ed_captcha.getText().toString();
-
+                ToastUtil.show(context, "密码是:" + captcha, Toast.LENGTH_LONG);
             }
         });
         bt_commit.setOnClickListener(new android.view.View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 String first = getPassWord(0, 6);
                 String repeat = getPassWord(6, 12);
                 if (first.equals(repeat)) {
@@ -136,11 +136,11 @@ public class MyDialog extends Dialog {
     }
 
     private String getPassWord(int start, int end) {
-        String a = "";
+        StringBuilder a = new StringBuilder();
         for (int i = start; i < end; i++) {
-            a += mArray[i].getText().toString();
+            a.append(mArray[i].getText().toString());
         }
-        return a;
+        return a.toString();
     }
 
     private void initView() {

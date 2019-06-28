@@ -13,14 +13,14 @@ import com.ceshi.ha.R;
  * Created by WY on 2017/10/12 0012.
  */
 
-public class GifViewUtils extends View {
+public class GifView extends View {
 
     private long movieStart;
     private Movie movie;
 
     //此处必须重写该构造方法
     @SuppressLint("ResourceType")
-    public GifViewUtils(Context context, AttributeSet attributeSet) {
+    public GifView(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
         //以文件流（InputStream）读取进gif图片资源
         movie = Movie.decodeStream(getResources().openRawResource(R.mipmap.ic_launcher));

@@ -14,6 +14,7 @@ import android.widget.Toast;
  */
 
 public class ApkInstallReceiver extends BroadcastReceiver {
+
     @Override
     public void onReceive(Context context, Intent intent) {
         if (intent.getAction().equals(DownloadManager.ACTION_DOWNLOAD_COMPLETE)) {

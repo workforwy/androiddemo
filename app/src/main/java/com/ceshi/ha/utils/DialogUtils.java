@@ -1,4 +1,4 @@
-package com.ceshi.ha.views;
+package com.ceshi.ha.utils;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -8,29 +8,25 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.view.LayoutInflater;
+import android.view.View;
 
 import com.ceshi.ha.R;
+import com.ceshi.ha.views.PassWordDialog;
 
 /**
  * Created by WY on 2017/10/11 0011.
  */
 
-public class DialogUtils extends Dialog {
+public class DialogUtils {
 
-    Context context;
-    DialogInterface exitDialog;
-
-    public DialogUtils(@NonNull Context context) {
-        super(context);
+    private void passWordDialog(Context context) {
+        View view = LayoutInflater.from(context).inflate(R.layout.dialog_password, null);
+        final PassWordDialog builder = new PassWordDialog(context, 0, 0, view, R.style.DialogTheme);
+        builder.show();
     }
 
-    private void showMydialog() {
-        //        View view = context.getLayoutInflater().inflate(R.layout.dialog_password, null);
-        //        final MyDialog builder = new MyDialog(context, 0, 0, view, R.style.DialogTheme);
-        //        builder.show();
-    }
-
-    void alert1() {
+    private void twoButtonDialog(Context context) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder
                 .setIcon(R.mipmap.ic_launcher)
@@ -43,7 +39,7 @@ public class DialogUtils extends Dialog {
 
     }
 
-    void alert2() {
+    private void threeButtonDialog(Context context) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setIcon(R.mipmap.ic_launcher);
         builder.setTitle(R.string.app_name);
@@ -55,32 +51,7 @@ public class DialogUtils extends Dialog {
         dialog.show();
     }
 
-
-    public void onClick(DialogInterface dialog, int which) {
-        // 判断是哪个对话框
-        if (dialog == exitDialog) {
-            // 点击了“退出”时弹出的对话框，则判断点的是哪个按钮
-            switch (which) {
-                case DialogInterface.BUTTON_NEGATIVE:
-                    // 在本例中，NEGATIVE对应的是：确定，即退出程序
-
-                    break;
-                case DialogInterface.BUTTON_POSITIVE:
-                    // 在本例中，POSITIVE对应的是：取消，即隐藏对话框即可，不必退出程序
-                    exitDialog.dismiss();
-                    break;
-                case DialogInterface.BUTTON_NEUTRAL:
-                    // 在本例中，NEUTRAL对应的是：后台播放，实现方案可以使用“回到桌面”
-                    Intent intent = new Intent();
-                    intent.setAction(Intent.ACTION_MAIN);
-                    intent.addCategory(Intent.CATEGORY_HOME);
-                    context.startActivity(intent);
-                    break;
-            }
-        }
-    }
-
-    public void Progress() {
+    private void progressDialog(Context context) {
         ProgressDialog dialog = new ProgressDialog(context);
         dialog.setIcon(R.mipmap.ic_launcher);
         dialog.setTitle("数据正在更新");

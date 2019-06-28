@@ -45,8 +45,6 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".m1card.ReadM1" />
-
         <activity android:name=".utils.acp.AcpActivity" />
         <activity android:name=".activity.HtmlActivity" />
         <activity android:name=".activity.NewActivity" />
@@ -58,7 +56,6 @@
             android:name=".activity.BroadcastReceiverActivity"
             android:screenOrientation="sensor"
             android:theme="@android:style/Theme.Dialog" />
-        <activity android:name=".m1card.ReadM1CardActivity" />
 
         <service android:name=".service.BackService" />
 
