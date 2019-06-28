@@ -21,9 +21,6 @@ import com.ceshi.ha.activity.TakePhotoActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-import it.gmariotti.recyclerview.adapter.AlphaAnimatorAdapter;
-
-
 /**
  * recycleview
  */
@@ -31,7 +28,6 @@ public class MainActivity extends Activity {
 
     private RecyclerView mRecyclerView;
     private RecycleAdapter mAdapter;
-    private AlphaAnimatorAdapter animatorAdapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,8 +40,7 @@ public class MainActivity extends Activity {
         mRecyclerView = findViewById(R.id.recyclerview);
         setLinear(mRecyclerView);
         mAdapter = new RecycleAdapter(this, getName());
-        animatorAdapter = new AlphaAnimatorAdapter(mAdapter, mRecyclerView);
-        mRecyclerView.setAdapter(animatorAdapter);
+        mRecyclerView.setAdapter(mAdapter);
         setListener();
     }
 

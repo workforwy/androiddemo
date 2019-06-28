@@ -29,29 +29,18 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        // 在application 全集的环境里面
-        activityList = new ArrayList<Activity>();
-
+        activityList = new ArrayList<>();
+        openCrashHandler();
     }
 
     /**
      * 全局异常处理
      */
-    void openCrashHandler() {
-        CrashHandler crashHandler = CrashHandler.getInstance();
-        crashHandler.init(getApplicationContext());
-    }
-
-    /**
-     * 杀掉进程,退出APP
-     */
-    void stopAPP() {
-        android.os.Process.killProcess(android.os.Process.myPid());
-    }
-
-    void getApp() {
-        ActivityManager am = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
-        ComponentName cn = am.getRunningTasks(1).get(0).topActivity;
+    private void openCrashHandler() {
+        if (!BuildConfig.DEBUG) {
+            CrashHandler crashHandler = CrashHandler.getInstance();
+            crashHandler.init(getApplicationContext());
+        }
     }
 
     /**
@@ -66,5 +55,11 @@ public class MyApplication extends Application {
     public void stopAppByIntent() {
         Intent intent = new Intent(this, MvpActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+    }
+    /**
+     * 杀掉进程,退出APP
+     */
+    private void stopAPP() {
+        android.os.Process.killProcess(android.os.Process.myPid());
     }
 }
