@@ -177,13 +177,5 @@ public final class PhoneUtil {
                         ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME, ContactsContract.CommonDataKinds.Phone.NUMBER}, null, null, ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME + " COLLATE LOCALIZED ASC");
     }
 
-    /**
-     * 获取手机号码
-     * @param context 上下文
-     * @return 手机号码，手机号码不一定能获取到
-     */
-    public static String getMobilePhoneNumber(Context context){
-        return ((TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE)).getLine1Number();
-    }
 
 }

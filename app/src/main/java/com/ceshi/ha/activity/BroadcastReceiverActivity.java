@@ -64,7 +64,7 @@ public class BroadcastReceiverActivity extends AppCompatActivity {
         Log.i("Other", ".send ok!");
     }
 
-    public class MyReceiver extends BroadcastReceiver {
+    public static class MyReceiver extends BroadcastReceiver {
 
         @Override
         public void onReceive(Context context, Intent intent) {

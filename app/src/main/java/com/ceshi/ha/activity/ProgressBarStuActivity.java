@@ -28,7 +28,7 @@ public class ProgressBarStuActivity extends Activity {
             // 进行进度更新
             progressBar.setProgress(i);
             if (i == 10) {
-                Toast.makeText(ProgressBarStuActivity.this, "更新成功", 1).show();
+                Toast.makeText(ProgressBarStuActivity.this, "更新成功", Toast.LENGTH_SHORT).show();
             }
         }
     };
