@@ -54,20 +54,13 @@ dependencies {
     // 注解模块
     implementation 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
-    //json
-    implementation 'com.alibaba:fastjson:1.1.46.android'
-    //动画
-    implementation 'com.github.Jerey-Jobs:AnimationHelper:1.0'
-    //富文本
-    implementation 'com.github.xymelon:richtext:1.0.4'
-    //事件传递
-    implementation 'de.greenrobot:eventbus:3.0.0-beta1'
     //网络
     implementation 'org.xutils:xutils:3.5.0'
     implementation 'com.squareup.okhttp3:okhttp:3.12.1'
     implementation 'com.squareup.retrofit2:retrofit:2.3.0'
     implementation 'eu.the4thfloor.volley:com.android.volley:2015.05.28'
-
+    //动画
+    implementation 'com.github.Jerey-Jobs:AnimationHelper:1.0'
     // 图片加载
     implementation 'com.squareup.picasso:picasso:2.5.2'
     // 沉浸式状态栏和标题栏
@@ -76,8 +69,6 @@ dependencies {
     implementation 'org.greenrobot:eventbus:3.0.0'
     // 屏幕适配模块
     implementation 'com.zhy:autolayout:1.4.5'
-    // 请求权限
-    implementation 'com.mylhyl:acp:1.1.7'
     // rxandroid
     implementation 'io.reactivex:rxandroid:1.0.1'
 
