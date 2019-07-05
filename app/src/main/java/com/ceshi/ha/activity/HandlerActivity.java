@@ -25,7 +25,10 @@ public class HandlerActivity extends AppCompatActivity {
     private Thread th;
     private static int s = 1;
     private int iamges[] = {
-            //            R.drawable.a3, R.drawable.a4
+            R.mipmap.za1,
+            R.mipmap.za2,
+            R.mipmap.za3,
+            R.mipmap.za4,
     };
 
     private final String DATA = "data";
@@ -49,13 +52,16 @@ public class HandlerActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                Message msg = new Message();
-                msg.what = 0x123;
-                Bundle bundle = new Bundle();
-                bundle.putInt(DATA, Integer.parseInt(ed1.getText().toString()));
-                msg.setData(bundle);
-                rub.myHandler.sendMessage(msg);
-
+                if (!ed1.getText().toString().equals("")) {
+                    Message msg = new Message();
+                    msg.what = 0x123;
+                    Bundle bundle = new Bundle();
+                    bundle.putInt(DATA, Integer.parseInt(ed1.getText().toString()));
+                    msg.setData(bundle);
+                    rub.myHandler.sendMessage(msg);
+                } else {
+                    Toast.makeText(HandlerActivity.this, "请填写数字", Toast.LENGTH_SHORT).show();
+                }
             }
         });
         //在UI线程中操作组件

@@ -10,7 +10,6 @@ import android.view.View;
 
 import com.ceshi.ha.activity.BroadcastActivity;
 import com.ceshi.ha.activity.HandlerActivity;
-import com.ceshi.ha.activity.HtmlActivity;
 import com.ceshi.ha.activity.ListActivity;
 import com.ceshi.ha.activity.MvpActivity;
 import com.ceshi.ha.activity.NewActivity;

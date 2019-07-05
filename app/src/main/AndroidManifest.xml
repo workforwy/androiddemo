@@ -43,7 +43,6 @@
         </activity>
 
         <activity android:name=".utils.acp.AcpActivity" />
-        <activity android:name=".activity.HtmlActivity" />
         <activity android:name=".activity.NewActivity" />
         <activity android:name=".activity.TabActivity" />
         <activity android:name=".activity.TakePhotoActivity" />
@@ -54,6 +53,7 @@
             android:screenOrientation="sensor" />
         <activity android:name=".activity.ProgressBarStuActivity" />
         <activity android:name=".activity.HandlerActivity" />
+        <activity android:name=".activity.ListActivity" />
 
         <service android:name=".service.BackService" />
 
