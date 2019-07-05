@@ -8,11 +8,13 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
+import android.telephony.SmsManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
 import com.ceshi.ha.R;
+import com.ceshi.ha.utils.toast.ToastUtil;
 
 import java.util.List;
 
@@ -36,6 +38,7 @@ public class BroadcastReceiverActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         if (savedInstanceState != null) {
             long id = savedInstanceState.getLong("id");
+            ToastUtil.showShort(this, "" + id);
         }
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_BEHIND);
         setContentView(R.layout.activity_receiver);
@@ -45,6 +48,7 @@ public class BroadcastReceiverActivity extends AppCompatActivity {
         IntentFilter filter = new IntentFilter();
         filter.addAction("com.iteye.myreceiver.action ");
         filter.addCategory(Intent.CATEGORY_DEFAULT);
+
         Intent ii = this.registerReceiver(mr, filter);
         String n = ii.getStringExtra("name");
         Toast.makeText(this, "动态注册接收者完成,收到粘性广播,name=" + n, Toast.LENGTH_SHORT).show();
@@ -99,7 +103,7 @@ public class BroadcastReceiverActivity extends AppCompatActivity {
      */
     public void sendSMS(String phoneNumber, String message) {
         //获取短信管理器
-        android.telephony.SmsManager smsManager = android.telephony.SmsManager.getDefault();
+        SmsManager smsManager = SmsManager.getDefault();
         //拆分短信内容（手机短信长度限制）
         List<String> divideContents = smsManager.divideMessage(message);
         for (String text : divideContents) {
