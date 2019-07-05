@@ -1,6 +1,7 @@
 package com.ceshi.ha.activity;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
@@ -32,7 +33,7 @@ public class HandlerActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mvp);
+        setContentView(R.layout.activity_receiver);
         ed1 = (EditText) findViewById(R.id.ed1);
         ok1 = (Button) findViewById(R.id.Ok);
         next = (Button) findViewById(R.id.next);
@@ -43,6 +44,7 @@ public class HandlerActivity extends AppCompatActivity {
         th = new Thread(rub);
         // 启动线程
         th.start();
+
         ok1.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -52,7 +54,7 @@ public class HandlerActivity extends AppCompatActivity {
                 Bundle bundle = new Bundle();
                 bundle.putInt(DATA, Integer.parseInt(ed1.getText().toString()));
                 msg.setData(bundle);
-                //                rub.myHandler.sendMessage(msg);
+                rub.myHandler.sendMessage(msg);
 
             }
         });
@@ -69,13 +71,14 @@ public class HandlerActivity extends AppCompatActivity {
     // 实现Runnable接口
     class Rub implements Runnable {
 
-        public HandlerActivity myHandler;
+        private Handler myHandler;
 
         // 线程体
         @Override
         public void run() {
             Looper.prepare();
-            myHandler = new HandlerActivity() {
+
+            myHandler = new Handler() {
                 public void handleMessage(Message msg) {
                     String ms = "";
                     if (msg.what == 0x123) {

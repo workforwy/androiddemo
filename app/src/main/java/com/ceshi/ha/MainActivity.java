@@ -8,15 +8,19 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.ceshi.ha.activity.TestActivity;
-import com.ceshi.ha.adapter.RecycleAdapter;
-import com.ceshi.ha.utils.acp.AcpActivity;
-import com.ceshi.ha.utils.divider.DividerItemDecoration;
+import com.ceshi.ha.activity.BroadcastActivity;
+import com.ceshi.ha.activity.HandlerActivity;
 import com.ceshi.ha.activity.HtmlActivity;
+import com.ceshi.ha.activity.ListActivity;
+import com.ceshi.ha.activity.MvpActivity;
 import com.ceshi.ha.activity.NewActivity;
+import com.ceshi.ha.activity.ProgressBarActivity;
+import com.ceshi.ha.activity.RefreshActivity;
 import com.ceshi.ha.activity.RxAndroid;
 import com.ceshi.ha.activity.TabActivity;
 import com.ceshi.ha.activity.TakePhotoActivity;
+import com.ceshi.ha.adapter.RecycleAdapter;
+import com.ceshi.ha.utils.divider.DividerItemDecoration;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,14 +70,17 @@ public class MainActivity extends Activity {
 
     private List<Class> getData() {
         List<Class> mDatas = new ArrayList<>();
+        mDatas.add(BroadcastActivity.class);
+        mDatas.add(HandlerActivity.class);
         mDatas.add(HtmlActivity.class);
+        mDatas.add(ListActivity.class);
+        mDatas.add(MvpActivity.class);
         mDatas.add(NewActivity.class);
+        mDatas.add(ProgressBarActivity.class);
+        mDatas.add(RefreshActivity.class);
+        mDatas.add(RxAndroid.class);
         mDatas.add(TabActivity.class);
         mDatas.add(TakePhotoActivity.class);
-        mDatas.add(AcpActivity.class);
-        mDatas.add(TakePhotoActivity.class);
-        mDatas.add(TestActivity.class);
-        mDatas.add(RxAndroid.class);
         return mDatas;
     }
 

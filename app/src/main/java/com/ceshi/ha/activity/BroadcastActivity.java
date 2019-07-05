@@ -22,7 +22,7 @@ import java.util.List;
  * Created by WY on 2017/9/17 0017.
  */
 
-public class BroadcastReceiverActivity extends AppCompatActivity {
+public class BroadcastActivity extends AppCompatActivity {
 
     @Override
     public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
@@ -49,9 +49,9 @@ public class BroadcastReceiverActivity extends AppCompatActivity {
         filter.addAction("com.iteye.myreceiver.action ");
         filter.addCategory(Intent.CATEGORY_DEFAULT);
 
-        Intent ii = this.registerReceiver(mr, filter);
-        String n = ii.getStringExtra("name");
-        Toast.makeText(this, "动态注册接收者完成,收到粘性广播,name=" + n, Toast.LENGTH_SHORT).show();
+        //        Intent intent = this.registerReceiver(mr, filter);
+        //            String n = intent.getStringExtra("name");
+        //        Toast.makeText(this, "动态注册接收者完成,收到粘性广播,name=" + n, Toast.LENGTH_SHORT).show();
 
     }
 

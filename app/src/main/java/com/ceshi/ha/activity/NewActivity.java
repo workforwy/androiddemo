@@ -69,7 +69,7 @@ public class NewActivity extends AppCompatActivity {
         }.start();
     }
 
-  class MyHandler extends Handler {
+    class MyHandler extends Handler {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);

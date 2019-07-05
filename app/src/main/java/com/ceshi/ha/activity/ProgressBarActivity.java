@@ -12,7 +12,7 @@ import com.ceshi.ha.R;
 /**
  * Created by WY on 2017/10/26 0026.
  */
-public class ProgressBarStuActivity extends Activity {
+public class ProgressBarActivity extends Activity {
     private int intstepProgress;
     private int intcurrentprogress;
     private int currentprogress;
@@ -28,7 +28,7 @@ public class ProgressBarStuActivity extends Activity {
             // 进行进度更新
             progressBar.setProgress(i);
             if (i == 10) {
-                Toast.makeText(ProgressBarStuActivity.this, "更新成功", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ProgressBarActivity.this, "更新成功", Toast.LENGTH_SHORT).show();
             }
         }
     };
