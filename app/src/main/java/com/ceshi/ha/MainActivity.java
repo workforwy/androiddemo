@@ -71,7 +71,6 @@ public class MainActivity extends Activity {
         List<Class> mDatas = new ArrayList<>();
         mDatas.add(BroadcastActivity.class);
         mDatas.add(HandlerActivity.class);
-        mDatas.add(HtmlActivity.class);
         mDatas.add(ListActivity.class);
         mDatas.add(MvpActivity.class);
         mDatas.add(NewActivity.class);
