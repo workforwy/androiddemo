@@ -19,10 +19,8 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-
     <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
-
     <uses-permission android:name="android.permission.BROADCAST_STICKY" />
 
     <application
@@ -47,13 +45,14 @@
         <activity android:name=".activity.TabActivity" />
         <activity android:name=".activity.TakePhotoActivity" />
         <activity android:name=".activity.RxAndroid" />
+        <activity android:name=".activity.ProgressBarActivity" />
+        <activity android:name=".activity.HandlerActivity" />
+        <activity android:name=".activity.ListActivity" />
 
         <activity
             android:name=".activity.BroadcastActivity"
             android:screenOrientation="sensor" />
-        <activity android:name=".activity.ProgressBarStuActivity" />
-        <activity android:name=".activity.HandlerActivity" />
-        <activity android:name=".activity.ListActivity" />
+
 
         <service android:name=".service.BackService" />
 
