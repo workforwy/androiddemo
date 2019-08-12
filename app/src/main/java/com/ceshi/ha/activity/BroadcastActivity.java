@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.os.Debug;
 import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.telephony.SmsManager;
@@ -25,13 +26,6 @@ import java.util.List;
 public class BroadcastActivity extends AppCompatActivity {
 
 
-
-    @Override
-    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
-        super.onSaveInstanceState(outState, outPersistentState);
-        outState.putLong("id", 1234567890);
-    }
-
     /**
      * 判断 savedInstanceState是不是空，如果不为空就取出来
      */
@@ -45,15 +39,17 @@ public class BroadcastActivity extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_BEHIND);
         setContentView(R.layout.activity_receiver);
 
-
         MyReceiver mr = new MyReceiver();
         IntentFilter filter = new IntentFilter();
         filter.addAction("com.iteye.myreceiver.action ");
         filter.addCategory(Intent.CATEGORY_DEFAULT);
 
-        //        Intent intent = this.registerReceiver(mr, filter);
-        //            String n = intent.getStringExtra("name");
-        //        Toast.makeText(this, "动态注册接收者完成,收到粘性广播,name=" + n, Toast.LENGTH_SHORT).show();
+        Intent intent = registerReceiver(mr, filter);
+        String n = "";
+        if (intent != null) {
+            n = intent.getStringExtra("name");
+        }
+        Toast.makeText(this, "动态注册接收者完成,收到粘性广播,name=" + n, Toast.LENGTH_SHORT).show();
 
     }
 
@@ -87,6 +83,12 @@ public class BroadcastActivity extends AppCompatActivity {
     }
 
     @Override
+    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
+        super.onSaveInstanceState(outState, outPersistentState);
+        outState.putLong("id", 1234567890);
+    }
+
+    @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
     }
@@ -111,5 +113,11 @@ public class BroadcastActivity extends AppCompatActivity {
         for (String text : divideContents) {
             //            smsManager.sendTextMessage(phoneNumber, null, text, sentPI, deliverPI);
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Debug.stopMethodTracing();
     }
 }
