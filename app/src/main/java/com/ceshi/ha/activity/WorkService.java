@@ -19,7 +19,7 @@ public class WorkService extends IntentService {
     }
 
     @Override
-    protected void onHandleIntent(@androidx.annotation.Nullable Intent intent) {
+    protected void onHandleIntent(Intent intent) {
 
     }
 
