@@ -16,7 +16,7 @@ public class BackService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-
+        System.out.println("onCreate");
     }
 
     @Nullable

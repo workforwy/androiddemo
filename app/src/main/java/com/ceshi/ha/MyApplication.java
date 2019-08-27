@@ -12,15 +12,6 @@ import com.ceshi.ha.activity.MvpActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * 注意要在Manifest中设置android:name=".WXApplication"
- * 要实现ImageAdapter 否则图片不能下载
- * gradle 中一定要添加一些依赖，否则初始化会失败。
- * compile 'com.android.support:recyclerview-v7:23.1.1'
- * compile 'com.android.support:support-v4:23.1.1'
- * compile 'com.android.support:appcompat-v7:23.1.1'
- * compile 'com.alibaba:fastjson:1.1.45'
- */
 
 public class MyApplication extends Application {
 
@@ -46,7 +37,7 @@ public class MyApplication extends Application {
     /**
      * 一键退出app
      */
-    public void stopAppByActivity() {
+    public static void stopAppByActivity() {
         for (Activity activity : activityList) {
             activity.finish();
         }
@@ -56,6 +47,7 @@ public class MyApplication extends Application {
         Intent intent = new Intent(this, MvpActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
     }
+
     /**
      * 杀掉进程,退出APP
      */
