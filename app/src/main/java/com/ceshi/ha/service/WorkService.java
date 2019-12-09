@@ -1,4 +1,4 @@
-package com.ceshi.ha.activity;
+package com.ceshi.ha.service;
 
 import android.app.IntentService;
 import android.content.Intent;
