@@ -12,8 +12,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.blankj.utilcode.util.ToastUtils;
 import com.ceshi.ha.R;
-import com.ceshi.ha.utils.toast.ToastUtil;
 
 /**
  * Created by WY on 2017/9/17 0017.
@@ -100,7 +100,7 @@ public class BroadcastActivity extends AppCompatActivity {
         super.onRestoreInstanceState(savedInstanceState);
         if (savedInstanceState != null) {
             long id = savedInstanceState.getLong("id");
-            ToastUtil.showShort(this, "" + id);
+            ToastUtils.showShort("" + id);
         }
     }
 

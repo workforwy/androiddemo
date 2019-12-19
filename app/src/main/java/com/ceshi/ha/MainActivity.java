@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -19,7 +20,6 @@ import com.ceshi.ha.activity.RxAndroid;
 import com.ceshi.ha.activity.TabActivity;
 import com.ceshi.ha.activity.TakePhotoActivity;
 import com.ceshi.ha.adapter.RecycleAdapter;
-import com.ceshi.ha.utils.divider.DividerItemDecoration;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -64,7 +64,7 @@ public class MainActivity extends Activity {
         //设置布局管理器
         mRecyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
         // 设置分割线
-        mRecyclerView.addItemDecoration(new DividerItemDecoration(MainActivity.this, DividerItemDecoration.VERTICAL_LIST));
+        mRecyclerView.addItemDecoration(new DividerItemDecoration(MainActivity.this, DividerItemDecoration.VERTICAL));
     }
 
     private List<Class> getData() {

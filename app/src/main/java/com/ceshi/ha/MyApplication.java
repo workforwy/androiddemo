@@ -1,17 +1,14 @@
 package com.ceshi.ha;
 
 import android.app.Activity;
-import android.app.ActivityManager;
 import android.app.Application;
-import android.content.ComponentName;
 import android.content.Intent;
 
-import com.ceshi.ha.utils.CrashHandler;
+import com.blankj.utilcode.util.CrashUtils;
 import com.ceshi.ha.activity.MvpActivity;
 
 import java.util.ArrayList;
 import java.util.List;
-
 
 public class MyApplication extends Application {
 
@@ -29,8 +26,7 @@ public class MyApplication extends Application {
      */
     private void openCrashHandler() {
         if (!BuildConfig.DEBUG) {
-            CrashHandler crashHandler = CrashHandler.getInstance();
-            crashHandler.init(getApplicationContext());
+            CrashUtils.init();
         }
     }
 

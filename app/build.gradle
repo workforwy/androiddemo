@@ -1,11 +1,11 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 28
     defaultConfig {
         applicationId "com.ceshi.ha"
         minSdkVersion 21
-        targetSdkVersion 29
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -57,7 +57,7 @@ dependencies {
     //网络
     implementation 'org.xutils:xutils:3.5.0'
     implementation 'com.squareup.okhttp3:okhttp:4.2.2'
-    implementation 'com.squareup.retrofit2:retrofit:2.6.2'
+//    implementation 'com.squareup.retrofit2:retrofit:2.7.0'
     implementation 'eu.the4thfloor.volley:com.android.volley:2015.05.28'
     //动画
     implementation 'com.github.Jerey-Jobs:AnimationHelper:1.0'

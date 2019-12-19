@@ -16,8 +16,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.blankj.utilcode.util.ToastUtils;
 import com.ceshi.ha.R;
-import com.ceshi.ha.utils.toast.ToastUtil;
 
 /**
  * 密码对话框
@@ -118,7 +118,7 @@ public class PassWordDialog extends Dialog {
             @Override
             public void onClick(View v) {
                 String captcha = ed_captcha.getText().toString();
-                ToastUtil.show(context, "密码是:" + captcha, Toast.LENGTH_LONG);
+                ToastUtils.showShort("密码是:" + captcha, Toast.LENGTH_LONG);
             }
         });
         bt_commit.setOnClickListener(new android.view.View.OnClickListener() {
