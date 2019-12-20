@@ -1,9 +1,11 @@
 package com.ceshi.ha.activity;
 
 import android.app.Activity;
+import android.net.http.SslError;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.webkit.SslErrorHandler;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -11,39 +13,32 @@ import android.webkit.WebViewClient;
 
 import com.ceshi.ha.R;
 
-import butterknife.BindView;
-
 /**
  * Created by Administrator on 2016/8/10.
  */
 public class RefreshActivity extends Activity {
 
-    @BindView(R.id.content_web_view)
     public WebView mWebView;
-    @BindView(R.id.refresh)
     public SwipeRefreshLayout refresh;
 
     @Override
     public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
         super.onCreate(savedInstanceState, persistentState);
         setContentView(R.layout.activity_refresh);
-        mWebView = (WebView) findViewById(R.id.content_web_view);
+        mWebView = findViewById(R.id.content_web_view);
         setSettings();
         mWebView.setWebViewClient(new ContentWebViewClient());
         mWebView.setWebChromeClient(new MyWebChromeClient());
-        refresh = (SwipeRefreshLayout) findViewById(R.id.refresh);
-        refresh.setOnRefreshListener(getRefreshListener());
-        mWebView.loadUrl("https://www.baidu.com/");
-    }
 
-    private SwipeRefreshLayout.OnRefreshListener getRefreshListener() {
-        SwipeRefreshLayout.OnRefreshListener listener = new SwipeRefreshLayout.OnRefreshListener() {
+        refresh = findViewById(R.id.refresh);
+        refresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+
             @Override
             public void onRefresh() {
                 mWebView.reload();
             }
-        };
-        return listener;
+        });
+        mWebView.loadUrl("https://www.jianshu.com/p/8ef6340dc166");
     }
 
     private class ContentWebViewClient extends WebViewClient {
@@ -52,6 +47,12 @@ public class RefreshActivity extends Activity {
             if (refresh.isRefreshing()) {
                 refresh.setRefreshing(false);
             }
+        }
+
+        @Override
+        public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
+            handler.proceed();
+            super.onReceivedSslError(view, handler, error);
         }
     }
 
@@ -69,8 +70,6 @@ public class RefreshActivity extends Activity {
         s.setJavaScriptEnabled(true);//支持js
         s.setDefaultTextEncodingName("utf-8");
         s.setGeolocationEnabled(true);
-        s.setGeolocationDatabasePath("/data/data/com.game90/databases/");
-        s.setPluginState(WebSettings.PluginState.ON);
         s.setJavaScriptCanOpenWindowsAutomatically(true);
     }
 }

@@ -13,7 +13,7 @@ import com.ceshi.ha.activity.BroadcastActivity;
 import com.ceshi.ha.activity.HandlerActivity;
 import com.ceshi.ha.activity.ListActivity;
 import com.ceshi.ha.activity.MvpActivity;
-import com.ceshi.ha.activity.NewActivity;
+import com.ceshi.ha.activity.ThreadActivity;
 import com.ceshi.ha.activity.ProgressBarActivity;
 import com.ceshi.ha.activity.RefreshActivity;
 import com.ceshi.ha.activity.RxAndroid;
@@ -29,25 +29,17 @@ import java.util.List;
  */
 public class MainActivity extends Activity {
 
-    private RecyclerView mRecyclerView;
-    private RecycleAdapter mAdapter;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setViews();
-    }
-
-    private void setViews() {
-        mRecyclerView = findViewById(R.id.recyclerview);
-        setLinear(mRecyclerView);
-        mAdapter = new RecycleAdapter(this, getName());
-        mRecyclerView.setAdapter(mAdapter);
-        setListener();
-    }
-
-    private void setListener() {
+        RecyclerView mRecyclerView = findViewById(R.id.recyclerview);
+        //设置布局管理器
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
+        // 设置分割线
+        mRecyclerView.addItemDecoration(new DividerItemDecoration(MainActivity.this, DividerItemDecoration.VERTICAL));
+        // 设置 adapter
+        RecycleAdapter mAdapter = new RecycleAdapter(this, getName());
         mAdapter.setOnItemClickListener(new RecycleAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
@@ -55,16 +47,7 @@ public class MainActivity extends Activity {
                 startActivity(intent);
             }
         });
-    }
-
-    /**
-     * 设置竖向
-     */
-    private void setLinear(RecyclerView mRecyclerView) {
-        //设置布局管理器
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
-        // 设置分割线
-        mRecyclerView.addItemDecoration(new DividerItemDecoration(MainActivity.this, DividerItemDecoration.VERTICAL));
+        mRecyclerView.setAdapter(mAdapter);
     }
 
     private List<Class> getData() {
@@ -73,7 +56,7 @@ public class MainActivity extends Activity {
         mDatas.add(HandlerActivity.class);
         mDatas.add(ListActivity.class);
         mDatas.add(MvpActivity.class);
-        mDatas.add(NewActivity.class);
+        mDatas.add(ThreadActivity.class);
         mDatas.add(ProgressBarActivity.class);
         mDatas.add(RefreshActivity.class);
         mDatas.add(RxAndroid.class);

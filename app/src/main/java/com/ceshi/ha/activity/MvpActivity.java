@@ -48,7 +48,6 @@ public class MvpActivity extends AppCompatActivity implements IMainActivityView,
         ButterKnife.bind(this);
         init();
         initView();
-
     }
 
     @Override

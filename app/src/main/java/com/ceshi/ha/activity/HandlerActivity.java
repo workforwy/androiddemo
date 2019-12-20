@@ -36,9 +36,9 @@ public class HandlerActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_receiver);
+        setContentView(R.layout.activity_handler);
         ed1 = (EditText) findViewById(R.id.ed1);
-        ok1 = (Button) findViewById(R.id.Ok);
+        ok1 = (Button) findViewById(R.id.ok);
         next = (Button) findViewById(R.id.next);
         image1 = (ImageView) findViewById(R.id.image1);
 

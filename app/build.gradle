@@ -10,10 +10,33 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
-
+//配置签名信息
+    signingConfigs {
+        debug {
+            storeFile file('debug.jks')
+            storePassword 'debug123'
+            keyAlias 'debug'
+            keyPassword 'debug123'
+        }
+        release {
+            storeFile file('debug.jks')
+            storePassword 'debug123'
+            keyAlias 'debug'
+            keyPassword 'debug123'
+        }
+    }
+//配置构建类型，可打出不同类型的包，默认有debug和release两种
     buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
+        }
+
+        staging {
+            signingConfig signingConfigs.debug
+        }
         release {
             minifyEnabled false
+            signingConfig signingConfigs.debug
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -21,25 +44,17 @@ android {
     compileOptions {
         encoding "UTF-8"
     }
-}
 //配置相关源文件的位置
 //sourceSets {
 //
 //}
-//配置签名信息
-//signingConfigs{
-//
-//}
 
-//配置构建类型，可打出不同类型的包，默认有debug和release两种
-//buildTypes{
-//
-//}
 
 // 配置不同风格的APP，在buildTypes的基础上还可以让每一个类型的APP拥有不同的风格，所以最终打出的APK的数量就是buildTypes乘以productFlavors
 //productFlavors{
 //
 //}
+}
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')

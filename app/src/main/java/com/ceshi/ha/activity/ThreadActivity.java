@@ -15,7 +15,7 @@ import java.io.File;
 /**
  * 进度条的写法
  */
-public class NewActivity extends AppCompatActivity {
+public class ThreadActivity extends AppCompatActivity {
 
     private ProgressBar progressBar;
 
@@ -28,7 +28,6 @@ public class NewActivity extends AppCompatActivity {
 
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         String path = Environment.getExternalStorageDirectory() + File.separator;
-
 
         Thread thread = new Thread(new Runnable() {
 
@@ -46,7 +45,6 @@ public class NewActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
             }
-
         });
         thread.start();
 
@@ -69,7 +67,7 @@ public class NewActivity extends AppCompatActivity {
         }.start();
     }
 
-    class MyHandler extends Handler {
+    private class MyHandler extends Handler {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
@@ -79,7 +77,7 @@ public class NewActivity extends AppCompatActivity {
             // 进行进度更新
             progressBar.setProgress(i);
             if (i == 10) {
-                Toast.makeText(NewActivity.this, "更新成功", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ThreadActivity.this, "更新成功", Toast.LENGTH_SHORT).show();
             }
         }
     }

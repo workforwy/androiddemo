@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.ceshi.ha.R;
 
@@ -23,21 +24,16 @@ public class BroadcastActivity extends AppCompatActivity {
 
     public static final String ACTION = "com.iteye.myreceiver.action";
 
-    /**
-     * 判断 savedInstanceState是不是空，如果不为空就取出来
-     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_receiver);
-
         MyReceiver mr = new MyReceiver();
 
         IntentFilter filter = new IntentFilter();
         filter.addAction(ACTION);
         filter.addCategory(Intent.CATEGORY_DEFAULT);
-
-        Intent intent = registerReceiver(mr, filter);
+        registerReceiver(mr, filter);
     }
 
     @Override
@@ -54,55 +50,43 @@ public class BroadcastActivity extends AppCompatActivity {
      * 发送广播,指定接收者权限,隐式意图,发送广播
      * 指定接收者权限
      */
-    public void sendBroadcast() {
+    public void sendNoSticky() {
         Intent i = new Intent();
         i.setAction("com.iteye.receiver.action");
         i.putExtra("name", "tom");
         sendBroadcast(i, " com.iteye.permission.receiver ");
-        Log.i("Other", ".send ok!");
     }
 
     /**
      * 发送粘性广播
-     *
-     * @param intent
      */
-    public void sendStickyBroadCast(Intent intent) {
+    public void sendSticky() {
+        Intent intent = new Intent();
         intent.setAction("com.iteye.myreceiver.action");
         intent.putExtra("name", "tom");
-        sendStickyBroadCast(intent);
+        sendStickyBroadcast(intent);
     }
 
     public class MyReceiver extends BroadcastReceiver {
 
         @Override
         public void onReceive(Context context, Intent intent) {
-
+            ToastUtils.showShort("onReceive = ", intent.getAction(), intent.getExtras().get("name"));
         }
-    }
-
-    public void onClick(View v) {
-        new Thread(new Runnable() {
-            public void run() {
-
-            }
-        }).start();
     }
 
     @Override
     public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
         super.onSaveInstanceState(outState, outPersistentState);
-        outState.putLong("id", 1234567890);
+        outState.putString("id", "翻转");
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         if (savedInstanceState != null) {
-            long id = savedInstanceState.getLong("id");
-            ToastUtils.showShort("" + id);
+            String id = savedInstanceState.getString("id");
+            ToastUtils.showShort(id);
         }
     }
-
-
 }
