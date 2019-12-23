@@ -12,6 +12,9 @@ import android.widget.TextView;
 
 import com.ceshi.ha.MainActivity;
 import com.ceshi.ha.R;
+import com.ceshi.ha.fragment.Fragment_Home;
+import com.ceshi.ha.fragment.Fragment_Main;
+import com.ceshi.ha.fragment.Fragment_My;
 
 /**
  * Created on 2018/3/10 0010 11:17.
@@ -75,6 +78,6 @@ public class TabActivity extends FragmentActivity implements TabHost.OnTabChange
     }
 
     public Class[] getFragments() {
-        return new Class[]{MainActivity.class};
+        return new Class[]{Fragment_Home.class, Fragment_Main.class, Fragment_My.class};
     }
 }

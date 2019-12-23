@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.net.http.SslError;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.webkit.SslErrorHandler;
 import android.webkit.WebChromeClient;
@@ -22,8 +23,8 @@ public class RefreshActivity extends Activity {
     public SwipeRefreshLayout refresh;
 
     @Override
-    public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_refresh);
         mWebView = findViewById(R.id.content_web_view);
         setSettings();
@@ -42,17 +43,12 @@ public class RefreshActivity extends Activity {
     }
 
     private class ContentWebViewClient extends WebViewClient {
+        @Override
         public void onPageFinished(WebView view, String url) {
             super.onPageFinished(view, url);
             if (refresh.isRefreshing()) {
                 refresh.setRefreshing(false);
             }
-        }
-
-        @Override
-        public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
-            handler.proceed();
-            super.onReceivedSslError(view, handler, error);
         }
     }
 
