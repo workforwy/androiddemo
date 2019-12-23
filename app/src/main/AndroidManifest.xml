@@ -42,7 +42,6 @@
         <activity android:name=".activity.TabActivity" />
         <activity android:name=".activity.TakePhotoActivity" />
         <activity android:name=".activity.RxAndroid" />
-        <activity android:name=".activity.ProgressBarActivity" />
         <activity android:name=".activity.HandlerActivity" />
         <activity android:name=".activity.ListActivity" />
 
