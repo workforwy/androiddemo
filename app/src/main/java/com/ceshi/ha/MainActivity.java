@@ -15,7 +15,6 @@ import com.ceshi.ha.activity.ListActivity;
 import com.ceshi.ha.activity.MvpActivity;
 import com.ceshi.ha.activity.ThreadActivity;
 import com.ceshi.ha.activity.RefreshActivity;
-import com.ceshi.ha.activity.RxAndroid;
 import com.ceshi.ha.activity.TabActivity;
 import com.ceshi.ha.activity.TakePhotoActivity;
 import com.ceshi.ha.adapter.RecycleAdapter;
@@ -57,7 +56,6 @@ public class MainActivity extends Activity {
         mDatas.add(MvpActivity.class);
         mDatas.add(ThreadActivity.class);
         mDatas.add(RefreshActivity.class);
-        mDatas.add(RxAndroid.class);
         mDatas.add(TabActivity.class);
         mDatas.add(TakePhotoActivity.class);
         return mDatas;
