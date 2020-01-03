@@ -67,7 +67,7 @@ public class BroadcastActivity extends AppCompatActivity {
         sendStickyBroadcast(intent);
     }
 
-    public class MyReceiver extends BroadcastReceiver {
+    public static class MyReceiver extends BroadcastReceiver {
 
         @Override
         public void onReceive(Context context, Intent intent) {
