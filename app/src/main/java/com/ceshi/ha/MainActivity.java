@@ -13,11 +13,12 @@ import com.ceshi.ha.activity.BroadcastActivity;
 import com.ceshi.ha.activity.HandlerActivity;
 import com.ceshi.ha.activity.ListActivity;
 import com.ceshi.ha.activity.MvpActivity;
-import com.ceshi.ha.activity.ThreadActivity;
 import com.ceshi.ha.activity.RefreshActivity;
 import com.ceshi.ha.activity.TabActivity;
 import com.ceshi.ha.activity.TakePhotoActivity;
+import com.ceshi.ha.activity.ThreadActivity;
 import com.ceshi.ha.adapter.RecycleAdapter;
+import com.ceshi.ha.rx.RXActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,6 +59,7 @@ public class MainActivity extends Activity {
         mDatas.add(RefreshActivity.class);
         mDatas.add(TabActivity.class);
         mDatas.add(TakePhotoActivity.class);
+        mDatas.add(RXActivity.class);
         return mDatas;
     }
 

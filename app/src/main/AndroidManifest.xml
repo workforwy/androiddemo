@@ -49,6 +49,7 @@
             android:screenOrientation="sensor" />
         <activity android:name=".activity.MvpActivity" />
         <activity android:name=".activity.RefreshActivity" />
+        <activity android:name=".rx.RXActivity" />
 
         <service android:name=".service.BackService" />
 
