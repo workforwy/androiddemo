@@ -1,7 +1,6 @@
 package com.ceshi.ha.activity;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
@@ -10,6 +9,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.ceshi.ha.R;
 import com.ceshi.ha.mvp.interfaceview.IMainActivityView;
