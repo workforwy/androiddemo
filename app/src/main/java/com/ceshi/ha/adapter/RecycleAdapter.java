@@ -8,6 +8,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ceshi.ha.R;
+import com.ceshi.ha.databinding.ItemRecycleBinding;
 
 import java.util.List;
 
@@ -78,13 +79,15 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.ViewHold
 
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder {
+    static class ViewHolder extends RecyclerView.ViewHolder {
 
+        ItemRecycleBinding item ;
         TextView tv;
 
         ViewHolder(View view) {
             super(view);
-            tv = view.findViewById(R.id.id_num);
+            item = ItemRecycleBinding.bind(view);
+            tv = item.idNum;
         }
     }
 }

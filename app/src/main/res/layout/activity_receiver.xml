@@ -12,22 +12,21 @@
         android:layout_height="wrap_content"
         android:inputType="number" />
 
-    <Button
+    <com.qmuiteam.qmui.layout.QMUIButton
         android:id="@+id/sendBroadcast"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/ed1"
         android:onClick="sendBroadcast"
         android:text="发送广播" />
 
-    <Button
+    <com.qmuiteam.qmui.layout.QMUIButton
         android:id="@+id/sendStickyBroadCast"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="sendStickyBroadCast"
         android:text="发送粘性广播" />
 
-    <ImageView
+    <com.qmuiteam.qmui.widget.QMUIRadiusImageView
         android:id="@+id/image1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

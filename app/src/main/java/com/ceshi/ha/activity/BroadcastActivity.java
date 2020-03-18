@@ -8,6 +8,7 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Toast;
 
@@ -16,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.ceshi.ha.R;
+import com.ceshi.ha.databinding.ActivityReceiverBinding;
 
 /**
  * Created by WY on 2017/9/17 0017.
@@ -25,12 +27,14 @@ public class BroadcastActivity extends AppCompatActivity {
 
     public static final String ACTION = "com.iteye.myreceiver.action";
 
+    ActivityReceiverBinding binding;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_receiver);
-        MyReceiver mr = new MyReceiver();
+        binding = ActivityReceiverBinding.inflate(LayoutInflater.from(BroadcastActivity.this));
+        setContentView(binding.getRoot());
 
+        MyReceiver mr = new MyReceiver();
         IntentFilter filter = new IntentFilter();
         filter.addAction(ACTION);
         filter.addCategory(Intent.CATEGORY_DEFAULT);
@@ -51,7 +55,7 @@ public class BroadcastActivity extends AppCompatActivity {
      * 发送广播,指定接收者权限,隐式意图,发送广播
      * 指定接收者权限
      */
-    public void sendNoSticky() {
+    public void sendBroadcast(View view) {
         Intent i = new Intent();
         i.setAction("com.iteye.receiver.action");
         i.putExtra("name", "tom");
@@ -61,7 +65,7 @@ public class BroadcastActivity extends AppCompatActivity {
     /**
      * 发送粘性广播
      */
-    public void sendSticky() {
+    public void sendStickyBroadCast(View view) {
         Intent intent = new Intent();
         intent.setAction("com.iteye.myreceiver.action");
         intent.putExtra("name", "tom");

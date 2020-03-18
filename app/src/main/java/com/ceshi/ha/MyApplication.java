@@ -6,6 +6,7 @@ import android.content.Intent;
 
 import com.blankj.utilcode.util.CrashUtils;
 import com.ceshi.ha.activity.MvpActivity;
+import com.qmuiteam.qmui.arch.QMUISwipeBackActivityManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +20,7 @@ public class MyApplication extends Application {
         super.onCreate();
         activityList = new ArrayList<>();
         openCrashHandler();
+        QMUISwipeBackActivityManager.init(this);
     }
 
     /**

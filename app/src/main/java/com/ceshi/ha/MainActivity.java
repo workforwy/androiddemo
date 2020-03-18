@@ -3,6 +3,7 @@ package com.ceshi.ha;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 
 import androidx.annotation.Nullable;
@@ -20,7 +21,9 @@ import com.ceshi.ha.activity.TabActivity;
 import com.ceshi.ha.activity.TakePhotoActivity;
 import com.ceshi.ha.activity.ThreadActivity;
 import com.ceshi.ha.adapter.RecycleAdapter;
+import com.ceshi.ha.databinding.ActivityMainBinding;
 import com.ceshi.ha.rx.RXActivity;
+import com.qmuiteam.qmui.arch.QMUIActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,13 +31,17 @@ import java.util.List;
 /**
  * recycleview
  */
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
+
+    ActivityMainBinding binding;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        RecyclerView mRecyclerView = findViewById(R.id.recyclerview);
+        binding = ActivityMainBinding.inflate(LayoutInflater.from(MainActivity.this));
+        setContentView(binding.getRoot());
+
+        RecyclerView mRecyclerView = binding.recyclerview;
         //设置布局管理器
         mRecyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
         // 设置分割线
