@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activity.BroadcastActivity">
+    tools:context=".activity.HandlerActivity">
 
     <EditText
         android:id="@+id/ed1"
@@ -16,15 +16,12 @@
         android:id="@+id/ok"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/ed1"
-        android:onClick="sendBroadcast"
         android:text="发送广播" />
 
     <Button
         android:id="@+id/next"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="sendStickyBroadCast"
         android:text="发送粘性广播" />
 
     <ImageView

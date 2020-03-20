@@ -46,7 +46,9 @@
 
         <activity
             android:name=".activity.BroadcastActivity"
-            android:screenOrientation="sensor" />
+            android:launchMode="singleTask" />
+
+
         <activity android:name=".activity.MvpActivity" />
         <activity android:name=".activity.RefreshActivity" />
         <activity android:name=".rx.RXActivity" />

@@ -17,6 +17,10 @@ android {
         enabled = true
     }
 
+    dataBinding {
+        enabled = true
+    }
+
     //配置签名信息
     signingConfigs {
         debug {
@@ -55,16 +59,20 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
     //配置相关源文件的位置
     //sourceSets {
     //
     //}
 
-
     // 配置不同风格的APP，在buildTypes的基础上还可以让每一个类型的APP拥有不同的风格，所以最终打出的APK的数量就是buildTypes乘以productFlavors
-    //productFlavors{
-    //
-    //}
+    productFlavors{
+
+//        online{
+//
+//        }
+
+    }
 }
 
 dependencies {
@@ -104,5 +112,7 @@ dependencies {
     implementation 'com.qmuiteam:qmui:2.0.0-alpha04'
     implementation "com.qmuiteam:arch:$qmui_arch_version"
     annotationProcessor "com.qmuiteam:arch-compiler:$qmui_arch_version" // use annotationProcessor if java
+
+    implementation 'com.blankj:utilcode:1.26.0'
 }
 

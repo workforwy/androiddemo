@@ -7,15 +7,18 @@ import android.content.IntentFilter;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.text.BoringLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.ToastUtils;
+import com.ceshi.ha.MainActivity;
 import com.ceshi.ha.R;
 import com.ceshi.ha.databinding.ActivityReceiverBinding;
 
@@ -25,20 +28,26 @@ import com.ceshi.ha.databinding.ActivityReceiverBinding;
 
 public class BroadcastActivity extends AppCompatActivity {
 
-    public static final String ACTION = "com.iteye.myreceiver.action";
+    public static final String ACTION = "com.wy.receiver.action";
+
+    public static final String ACTION_PERMISSION = "com.wy.permission.receiver";
 
     ActivityReceiverBinding binding;
+    MyReceiver mr;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityReceiverBinding.inflate(LayoutInflater.from(BroadcastActivity.this));
+        binding = ActivityReceiverBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        MyReceiver mr = new MyReceiver();
+        mr = new MyReceiver();
         IntentFilter filter = new IntentFilter();
         filter.addAction(ACTION);
         filter.addCategory(Intent.CATEGORY_DEFAULT);
+
         registerReceiver(mr, filter);
+
     }
 
     @Override
@@ -57,9 +66,10 @@ public class BroadcastActivity extends AppCompatActivity {
      */
     public void sendBroadcast(View view) {
         Intent i = new Intent();
-        i.setAction("com.iteye.receiver.action");
-        i.putExtra("name", "tom");
-        sendBroadcast(i, " com.iteye.permission.receiver ");
+        i.setAction(ACTION);
+        i.putExtra("name", "normal");
+
+        sendBroadcast(i);
     }
 
     /**
@@ -67,23 +77,29 @@ public class BroadcastActivity extends AppCompatActivity {
      */
     public void sendStickyBroadCast(View view) {
         Intent intent = new Intent();
-        intent.setAction("com.iteye.myreceiver.action");
-        intent.putExtra("name", "tom");
+        intent.setAction(ACTION);
+        intent.putExtra("name", "sticky");
         sendStickyBroadcast(intent);
+    }
+
+    public void reStartActivity(View view) {
+        Intent intent = new Intent(BroadcastActivity.this, MainActivity.class);
+        intent.putExtra("name", "重启了");
+        startActivity(intent);
     }
 
     public static class MyReceiver extends BroadcastReceiver {
 
         @Override
         public void onReceive(Context context, Intent intent) {
-            ToastUtils.showShort("onReceive = ", intent.getAction(), intent.getExtras().get("name"));
+            ToastUtils.showShort("onReceive = " + intent.getAction() + "==" + intent.getExtras().get("name"));
         }
     }
 
     @Override
-    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
-        super.onSaveInstanceState(outState, outPersistentState);
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
         outState.putString("id", "翻转");
+        super.onSaveInstanceState(outState);
     }
 
     @Override
@@ -93,5 +109,12 @@ public class BroadcastActivity extends AppCompatActivity {
             String id = savedInstanceState.getString("id");
             ToastUtils.showShort(id);
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mr != null)
+            unregisterReceiver(mr);
     }
 }

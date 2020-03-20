@@ -10,6 +10,16 @@ public class User {
     private String gender;
     private String hobby;
 
+    public User() {
+    }
+
+    public User(String age, String name, String gender, String hobby) {
+        this.age = age;
+        this.name = name;
+        this.gender = gender;
+        this.hobby = hobby;
+    }
+
     public String getAge() {
         return age;
     }

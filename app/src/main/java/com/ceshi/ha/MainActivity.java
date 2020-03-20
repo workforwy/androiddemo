@@ -21,9 +21,11 @@ import com.ceshi.ha.activity.TabActivity;
 import com.ceshi.ha.activity.TakePhotoActivity;
 import com.ceshi.ha.activity.ThreadActivity;
 import com.ceshi.ha.adapter.RecycleAdapter;
+import com.ceshi.ha.bean.User;
 import com.ceshi.ha.databinding.ActivityMainBinding;
 import com.ceshi.ha.rx.RXActivity;
 import com.qmuiteam.qmui.arch.QMUIActivity;
+import com.qmuiteam.qmui.widget.dialog.QMUIBottomSheet;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,8 +40,9 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityMainBinding.inflate(LayoutInflater.from(MainActivity.this));
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        binding.setUser(new User("12","张三","男","爱好"));
 
         RecyclerView mRecyclerView = binding.recyclerview;
         //设置布局管理器
@@ -53,6 +56,9 @@ public class MainActivity extends BaseActivity {
             public void onItemClick(View view, int position) {
                 Intent intent = new Intent(MainActivity.this, getData().get(position));
                 startActivity(intent);
+//
+//                QMUIBottomSheet sheet = new QMUIBottomSheet(MainActivity.this);
+//                sheet.show();
             }
         });
         mRecyclerView.setAdapter(mAdapter);
