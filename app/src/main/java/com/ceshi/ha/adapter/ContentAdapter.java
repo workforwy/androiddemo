@@ -67,7 +67,7 @@ public class ContentAdapter extends BaseAdapter {
      * 复用模板
      */
     class ViewHolder {
-        public TextView textView;
+        TextView textView;
         public Button button;
     }
 

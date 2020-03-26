@@ -68,20 +68,18 @@ public class HandlerActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                new Thread() {
+                runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        super.run();
                         for (int i = 0; i < images.length; i++) {
-                            binding.image1.setImageResource(images[s++ % images.length]);
+                            binding.image1.setImageResource(images[i++ % images.length]);
                             if (i == images.length - 1) {
                                 break;
                             }
                         }
 
                     }
-                }.start();
-
+                });
             }
         });
     }
