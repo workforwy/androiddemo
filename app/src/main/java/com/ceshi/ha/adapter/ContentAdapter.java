@@ -16,6 +16,9 @@ import com.ceshi.ha.R;
 
 import java.util.List;
 
+/**
+ * adapter 标准写法
+ */
 public class ContentAdapter extends BaseAdapter {
 
     private static final String TAG = "ContentAdapter";

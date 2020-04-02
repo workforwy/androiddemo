@@ -14,5 +14,5 @@ public interface IMainActivityPresenter {
 
     void submitData(Context context, List<EditText> editList, ProgressBar progressBar);
 
-    void initData(List<EditText> editList);
+    void clearContent(List<EditText> editList);
 }

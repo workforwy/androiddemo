@@ -13,6 +13,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.ceshi.ha.R;
+import com.ceshi.ha.databinding.ActivityMvpBinding;
 import com.ceshi.ha.mvp.interfaceview.IMainActivityView;
 import com.ceshi.ha.mvp.compl.MainActivityPresenterCompl;
 import com.ceshi.ha.mvp.presenter.IMainActivityPresenter;
@@ -27,25 +28,18 @@ import butterknife.ButterKnife;
 /**
  * Created by rex on 2017/3/18 0018.
  */
-public class MvpActivity extends AppCompatActivity implements IMainActivityView, View.OnClickListener{
-
-    @BindView(R.id.submit_pro)
-    public ProgressBar progressBar;
-    @BindView(R.id.clean)
-    public Button btn_clean;
-    @BindView(R.id.submit)
-    public Button btn_submit;
-    @BindView(R.id.iv_touxiang)
-    public ImageView touxiang;
+public class MvpActivity extends AppCompatActivity implements IMainActivityView, View.OnClickListener {
 
     IMainActivityPresenter mainActivityPresenter;
     List<EditText> editList;
+    ActivityMvpBinding binding;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mvp);
-        ButterKnife.bind(this);
+        binding = ActivityMvpBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
         init();
         initView();
     }
@@ -58,13 +52,11 @@ public class MvpActivity extends AppCompatActivity implements IMainActivityView,
 
     @Override
     public void initView() {
-        editList.add((EditText) findViewById(R.id.age));
-        editList.add((EditText) findViewById(R.id.gender));
-        editList.add((EditText) findViewById(R.id.name));
-        editList.add((EditText) findViewById(R.id.hobby));
-        btn_submit.setOnClickListener(this);
-        btn_clean.setOnClickListener(this);
-        progressBar.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        editList.add(binding.name);
+        editList.add(binding.age);
+        binding.submit.setOnClickListener(this);
+        binding.clean.setOnClickListener(this);
+        binding.submitPro.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
     }
 
     @Override
@@ -72,45 +64,23 @@ public class MvpActivity extends AppCompatActivity implements IMainActivityView,
         switch (view.getId()) {
             case R.id.submit:
                 submitData();
-                AnimationHelper.show(touxiang);
+                AnimationHelper.show(binding.ivTouxiang);
                 break;
             case R.id.clean:
-                initData();
+                clearContent();
                 break;
         }
     }
 
     @Override
     public void submitData() {
-        mainActivityPresenter.submitData(this, editList, progressBar);
+        mainActivityPresenter.submitData(this, editList, binding.submitPro);
     }
 
     @Override
-    public void initData() {
-        mainActivityPresenter.initData(editList);
+    public void clearContent() {
+        mainActivityPresenter.clearContent(editList);
     }
 
-    long lastkeyBackDown;
 
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        //判断按下的是否是返回键
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            //记录下当前按下返回键的时间
-            long currentTime = System.currentTimeMillis();
-            //两次按下的时间间隔进行判断 ，判断是否是连续按下
-            if (currentTime - lastkeyBackDown > 1500) {
-                Toast.makeText(this, "不是连续按下，再按一下退出应用程序", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(this, "是连续按下，退出应用程序", Toast.LENGTH_SHORT).show();
-                finish();
-            }
-            //重置
-            lastkeyBackDown = currentTime;
-            //ture和false效果一样
-            return false;
-        }
-        //建议不要动，继承父类的返回结果，因为我们只改变了返回键的点击事件，别的键还是要执行父类的默认方法
-        return super.onKeyDown(keyCode, event);
-    }
 }

@@ -5,12 +5,13 @@ package com.ceshi.ha.mvp.interfaceview;
  */
 
 public interface IMainActivityView {
-    void initView();
 
-    void init();
+    void init(); // 数据准备
 
-    void submitData();
+    void initView(); // 界面准备
 
-    void initData();
+    void submitData(); // 数据提交
+
+    void clearContent(); // 数据清除
 
 }

@@ -1,13 +1,10 @@
 package com.ceshi.ha;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,7 +13,7 @@ import com.ceshi.ha.activity.BroadcastActivity;
 import com.ceshi.ha.activity.HandlerActivity;
 import com.ceshi.ha.activity.ListActivity;
 import com.ceshi.ha.activity.MvpActivity;
-import com.ceshi.ha.activity.RefreshActivity;
+import com.ceshi.ha.activity.WebViewActivity;
 import com.ceshi.ha.activity.TabActivity;
 import com.ceshi.ha.activity.TakePhotoActivity;
 import com.ceshi.ha.activity.ThreadActivity;
@@ -24,8 +21,6 @@ import com.ceshi.ha.adapter.RecycleAdapter;
 import com.ceshi.ha.bean.User;
 import com.ceshi.ha.databinding.ActivityMainBinding;
 import com.ceshi.ha.rx.RXActivity;
-import com.qmuiteam.qmui.arch.QMUIActivity;
-import com.qmuiteam.qmui.widget.dialog.QMUIBottomSheet;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -71,7 +66,7 @@ public class MainActivity extends BaseActivity {
         mDatas.add(ListActivity.class);
         mDatas.add(MvpActivity.class);
         mDatas.add(ThreadActivity.class);
-        mDatas.add(RefreshActivity.class);
+        mDatas.add(WebViewActivity.class);
         mDatas.add(TabActivity.class);
         mDatas.add(TakePhotoActivity.class);
         mDatas.add(RXActivity.class);

@@ -50,7 +50,7 @@
 
 
         <activity android:name=".activity.MvpActivity" />
-        <activity android:name=".activity.RefreshActivity" />
+        <activity android:name=".activity.WebViewActivity" />
         <activity android:name=".rx.RXActivity" />
 
         <service android:name=".service.BackService" />

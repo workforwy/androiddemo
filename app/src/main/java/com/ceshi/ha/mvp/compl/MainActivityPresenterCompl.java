@@ -34,15 +34,13 @@ public class MainActivityPresenterCompl implements IMainActivityPresenter {
                 }
                 User info = new User();
                 info.setAge(editList.get(0).getText().toString());
-                info.setGender(editList.get(1).getText().toString());
-                info.setName(editList.get(2).getText().toString());
-                info.setHobby(editList.get(3).getText().toString());
+                info.setName(editList.get(1).getText().toString());
                 mainHandler.post(new Runnable() {
                     @Override
                     public void run() {
                         progressBar.setVisibility(View.INVISIBLE);
                         Toast.makeText(context, "提交数据完成", Toast.LENGTH_SHORT).show();
-                        initData(editList);
+                        clearContent(editList);
                     }
                 });
             }
@@ -50,7 +48,7 @@ public class MainActivityPresenterCompl implements IMainActivityPresenter {
     }
 
     @Override
-    public void initData(List<EditText> editList) {
+    public void clearContent(List<EditText> editList) {
         for (EditText editText : editList)
             editText.setText("");
     }
