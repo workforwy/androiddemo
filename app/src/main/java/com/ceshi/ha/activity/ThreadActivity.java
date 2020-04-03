@@ -32,16 +32,16 @@ public class ThreadActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.progressbar);
         progressBar = findViewById(R.id.progressBar);
-//        Thread3 thread3 = new Thread3();
-//        FutureTask<Integer> ft = new FutureTask<>(thread3);
-//        new Thread(ft, "返回值").start();
-//        try {
-//            System.out.println("子线程的返回值：" + ft.get());
-//        } catch (ExecutionException e) {
-//            e.printStackTrace();
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
+        Thread3 thread3 = new Thread3();
+        FutureTask<Integer> ft = new FutureTask<>(thread3);
+        new Thread(ft, "返回值").start();
+        try {
+            System.out.println("子线程的返回值：" + ft.get());
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         ThreadPool threadPool =  new ThreadPool();
         threadPool.main(null);
     }
