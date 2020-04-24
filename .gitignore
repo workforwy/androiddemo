@@ -12,3 +12,7 @@
 /app/build
 gradle
 .idea
+Gemfile
+Gemfile.lock
+fastlane/Appfile
+fastlane/Fastfile

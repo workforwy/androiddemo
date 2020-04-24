@@ -1,5 +1,6 @@
 package com.ceshi.ha.activity;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.Bundle;
 import android.webkit.WebChromeClient;
@@ -54,6 +55,7 @@ public class WebViewActivity extends Activity {
 
     }
 
+    @SuppressLint("SetJavaScriptEnabled")
     private void setSettings() {
         WebSettings s = binding.contentWebView.getSettings();
         s.setBuiltInZoomControls(false);

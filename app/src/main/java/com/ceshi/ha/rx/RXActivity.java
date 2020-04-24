@@ -16,6 +16,7 @@ import android.widget.ListView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.ceshi.ha.R;
+import com.ceshi.ha.databinding.ActivityRxBinding;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -36,10 +37,6 @@ import io.reactivex.schedulers.Schedulers;
 import static java.lang.Thread.sleep;
 
 public class RXActivity extends AppCompatActivity {
-
-    @BindView(R.id.lv_data)
-    ListView lvData;
-
     private static final String TAG = "RxJavaTag";
     private Disposable mDisposable, mDisposable1;
     private int[] drawableRes = new int[]{
@@ -47,12 +44,13 @@ public class RXActivity extends AppCompatActivity {
             R.mipmap.app_guide_broadcast_nor, R.mipmap.app_guide_map_nor, R.mipmap.app_guide_beauty_nor,
             R.mipmap.app_guide_music_nor, R.mipmap.app_guide_news_nor, R.mipmap.app_guide_note_nor};
 
+    ActivityRxBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_rx);
-        ButterKnife.bind(this);
+        binding = ActivityRxBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
         rxJavaBaseUse();
     }
 
@@ -80,7 +78,7 @@ public class RXActivity extends AppCompatActivity {
 
             @Override
             public void onNext(String value) {
-                if ("2".equals(value)) {
+                if ("连载2".equals(value)) {
                     mDisposable.dispose();
                     return;
                 }
@@ -230,7 +228,7 @@ public class RXActivity extends AppCompatActivity {
     }
 
     private void updateIcon(Drawable drawable) {
-        lvData.setAdapter(new BaseAdapter() {
+        binding.lvData.setAdapter(new BaseAdapter() {
             @Override
             public int getCount() {
                 return drawableRes.length;

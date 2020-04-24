@@ -10,11 +10,12 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-public class Fragment_Main extends Fragment {
+import com.qmuiteam.qmui.arch.QMUIFragment;
 
-    @Nullable
+public class Fragment_Main extends QMUIFragment {
+
     @Override
-    public View onCreateView(@Nullable LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    protected View onCreateView() {
         TextView textView = new TextView(getActivity());
         textView.setText("Main");
         textView.setGravity(Gravity.CENTER);

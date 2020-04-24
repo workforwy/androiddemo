@@ -6,21 +6,14 @@
     android:orientation="vertical"
     tools:context=".activity.TabActivity">
 
-    <FrameLayout
-        android:id="@+id/contentLayout"
+    <com.qmuiteam.qmui.widget.QMUIViewPager
+        android:id="@+id/qvp"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />
 
-    <androidx.fragment.app.FragmentTabHost
-        android:id="@android:id/tabhost"
+    <com.qmuiteam.qmui.widget.tab.QMUITabSegment
+        android:id="@+id/qtab"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#F6F6F6">
-
-        <FrameLayout
-            android:id="@android:id/tabcontent"
-            android:layout_width="0dp"
-            android:layout_height="0dp" />
-    </androidx.fragment.app.FragmentTabHost>
+        android:layout_height="50dp" />
 </LinearLayout>

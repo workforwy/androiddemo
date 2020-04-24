@@ -8,14 +8,27 @@ import android.widget.TabHost;
 import android.widget.TabWidget;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.fragment.app.FragmentTabHost;
+import androidx.viewpager.widget.PagerAdapter;
 
-import com.ceshi.ha.MainActivity;
 import com.ceshi.ha.R;
+import com.ceshi.ha.databinding.ActivityTabBinding;
 import com.ceshi.ha.fragment.Fragment_Home;
 import com.ceshi.ha.fragment.Fragment_Main;
 import com.ceshi.ha.fragment.Fragment_My;
+import com.qmuiteam.qmui.arch.QMUIFragment;
+import com.qmuiteam.qmui.arch.QMUIFragmentPagerAdapter;
+import com.qmuiteam.qmui.widget.QMUIPagerAdapter;
+import com.qmuiteam.qmui.widget.tab.QMUITab;
+import com.qmuiteam.qmui.widget.tab.QMUITabSegment;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created on 2018/3/10 0010 11:17.
@@ -23,62 +36,52 @@ import com.ceshi.ha.fragment.Fragment_My;
  * @author wy
  * 类定义：
  */
-public class TabActivity extends FragmentActivity implements TabHost.OnTabChangeListener {
+public class TabActivity extends FragmentActivity {
 
-    FragmentTabHost tabhost;
-    TextView textView;
+    ActivityTabBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tab);
-        setTabHost();
+        binding = ActivityTabBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        initView();
     }
 
-    private void setTabHost() {
-        tabhost = findViewById(android.R.id.tabhost);
-        tabhost.setup(this, getSupportFragmentManager(), R.id.contentLayout);
-        tabhost.getTabWidget().setDividerDrawable(R.mipmap.bt_bg);
-        tabhost.setOnTabChangedListener(this);
-        for (int i = 0; i < getTabsText().length; i++) {
-            TabHost.TabSpec tabSpec = tabhost.newTabSpec(getTabsText()[i]).setIndicator(getTabView(i));
-            tabhost.addTab(tabSpec, getFragments()[i], null);
-            tabhost.setTag(i);
-        }
-    }
-
-    private View getTabView(int idx) {
-        View view = LayoutInflater.from(this).inflate(R.layout.tab_content, null);
-        textView = view.findViewById(R.id.tvtab);
-        textView.setText(getTabsText()[idx]);
-        if (idx == 0) {
-            textView.setTextColor(Color.RED);
-        }
-        return view;
-    }
-
-    @Override
-    public void onTabChanged(String tabId) {
-        TabWidget tabw = tabhost.getTabWidget();
-        for (int i = 0; i < tabw.getChildCount(); i++) {
-            View view = tabw.getChildAt(i);
-            if (i == tabhost.getCurrentTab()) {
-                ((TextView) view.findViewById(R.id.tvtab)).setTextColor(Color.RED);
-            } else {
-                ((TextView) view.findViewById(R.id.tvtab)).setTextColor(Color.GRAY);
+    private void initView() {
+        QMUIFragmentPagerAdapter qmuiFragmentPagerAdapter = new QMUIFragmentPagerAdapter(getSupportFragmentManager()) {
+            @Override
+            public QMUIFragment createFragment(int position) {
+                switch (position) {
+                    case 0:
+                        return new Fragment_Home();
+                    case 1:
+                        return new Fragment_Main();
+                    case 2:
+                    default:
+                        return new Fragment_My();
+                }
             }
-        }
-    }
 
-    public String[] getTabsText() {
-        String[] tabs = new String[getFragments().length];
-        for (int i = 0; i < getFragments().length; i++) {
-            tabs[i] = getFragments()[i].getSimpleName();
-        }
-        return tabs;
-    }
+            @Override
+            public int getCount() {
+                return 3;
+            }
 
-    public Class[] getFragments() {
-        return new Class[]{Fragment_Home.class, Fragment_Main.class, Fragment_My.class};
+            @Override
+            public CharSequence getPageTitle(int position) {
+                switch (position) {
+                    case 0:
+                        return "首页";
+                    case 1:
+                        return "主页";
+                    case 2:
+                    default:
+                        return "我的";
+                }
+            }
+        };
+        binding.qvp.setAdapter(qmuiFragmentPagerAdapter);
+        binding.qtab.setupWithViewPager(binding.qvp);
     }
 }

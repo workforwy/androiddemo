@@ -24,6 +24,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import com.ceshi.ha.R;
+import com.ceshi.ha.databinding.ActivityTakephotoBinding;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -37,25 +38,19 @@ public class TakePhotoActivity extends AppCompatActivity {
 
     public static final int PHOTO_REQUEST_CAREMA = 1;// 拍照
     public static final int CROP_PHOTO = 2;
-    private Button takePhoto;
-    private ImageView picture;
+
     private Uri imageUri;
+
+    ActivityTakephotoBinding binding;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_takephoto);
-        picture = findViewById(R.id.imageView);
-        takePhoto = findViewById(R.id.button);
-        takePhoto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                takePhoto();
-            }
-        });
+        binding= ActivityTakephotoBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
     }
 
-    public void takePhoto() {
+    public void takePhoto(View view) {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
             String filename = new SimpleDateFormat("yyyyMMdd-HHmmss", Locale.CHINA).format(new Date()) + ".png";
@@ -113,7 +108,7 @@ public class TakePhotoActivity extends AppCompatActivity {
                     try {
                         Bitmap bitmap = BitmapFactory.decodeStream(getContentResolver()
                                 .openInputStream(imageUri));
-                        picture.setImageBitmap(bitmap);
+                        binding.imageView.setImageBitmap(bitmap);
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
                     }

@@ -1,8 +1,8 @@
 package com.ceshi.ha.activity;
 
 import android.annotation.SuppressLint;
+import android.app.LauncherActivity;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.widget.ProgressBar;
@@ -10,9 +10,10 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.ceshi.ha.BaseActivity;
 import com.ceshi.ha.R;
+import com.ceshi.ha.databinding.ActivityThreadBinding;
 
-import java.io.File;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
@@ -20,30 +21,20 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.FutureTask;
 
 /**
- * 进度条的写法
+ * 线程的写法
  */
-public class ThreadActivity extends AppCompatActivity {
+public class ThreadActivity extends BaseActivity {
 
-    private ProgressBar progressBar;
     private MyHandler handler = new MyHandler();
+    ActivityThreadBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.progressbar);
-        progressBar = findViewById(R.id.progressBar);
-        Thread3 thread3 = new Thread3();
-        FutureTask<Integer> ft = new FutureTask<>(thread3);
-        new Thread(ft, "返回值").start();
-        try {
-            System.out.println("子线程的返回值：" + ft.get());
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        ThreadPool threadPool =  new ThreadPool();
-        threadPool.main(null);
+        binding = ActivityThreadBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+//        new ThreadPool();
+        new Thread1().start();
     }
 
     // 继承
@@ -58,7 +49,7 @@ public class ThreadActivity extends AppCompatActivity {
                 ms.arg1 = i;
                 handler.sendMessage(ms);
                 try {
-                    Thread.sleep(1000);
+                    sleep(1000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -71,12 +62,12 @@ public class ThreadActivity extends AppCompatActivity {
 
         @Override
         public void run() {
-            int progressBarMax = progressBar.getMax();
+            int progressBarMax = binding.progressBar.getMax();
             try {
-                while (progressBarMax != progressBar.getProgress()) {
+                while (progressBarMax != binding.progressBar.getProgress()) {
                     int stepProgress = progressBarMax / 10;
-                    int currentprogress = progressBar.getProgress();
-                    progressBar.setProgress(currentprogress + stepProgress);
+                    int currentprogress = binding.progressBar.getProgress();
+                    binding.progressBar.setProgress(currentprogress + stepProgress);
                     Thread.sleep(1000);
                 }
             } catch (Exception e) {
@@ -85,45 +76,52 @@ public class ThreadActivity extends AppCompatActivity {
         }
     }
 
+    private void testFuture() {
+        Thread3 thread3 = new Thread3();
+        FutureTask<Integer> ft = new FutureTask<>(thread3);
+        new Thread(ft, "返回值").start();
+        try {
+            System.out.println("子线程的返回值：" + ft.get());
+
+        } catch (ExecutionException | InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
     // FutureTask
     class Thread3 implements Callable<Integer> {
 
         @Override
         public Integer call() throws Exception {
-            return getData();
+            int i = 0;
+            for (; i < 100; i++) {
+                System.out.println(Thread.currentThread().getName() + " " + i);
+                if (i == 99)
+                    break;
+            }
+
+            return i;
         }
     }
 
-    private Integer getData() {
-        int i = 0;
-        for (; i < 100; i++) {
-            System.out.println(Thread.currentThread().getName() + " " + i);
-        }
-        return i;
-    }
-
+    // 线程池
     class ThreadPool {
-        /* POOL_NUM */
-        private int POOL_NUM = 10;
-
-        /**
-         * Main function
-         */
-        public void main(String[] args) {
+        {
             ExecutorService executorService = Executors.newFixedThreadPool(5);
+            int POOL_NUM = 10;
             for (int i = 0; i < POOL_NUM; i++) {
                 RunnableThread thread = new RunnableThread();
                 executorService.execute(thread);
             }
         }
-    }
 
-    class RunnableThread implements Runnable {
-        private int THREAD_NUM = 10;
-
-        public void run() {
-            for (int i = 0; i < THREAD_NUM; i++) {
-                System.out.println("线程" + Thread.currentThread() + " " + i);
+        class RunnableThread implements Runnable {
+            @Override
+            public void run() {
+                int THREAD_NUM = 10;
+                for (int i = 0; i < THREAD_NUM; i++) {
+                    System.out.println("线程" + Thread.currentThread().getName() + " " + i);
+                }
             }
         }
     }
@@ -137,7 +135,7 @@ public class ThreadActivity extends AppCompatActivity {
             int i = 0;
             i = msg.arg1;
             // 进行进度更新
-            progressBar.setProgress(i);
+            binding.progressBar.setProgress(i*10);
             if (i == 10) {
                 Toast.makeText(ThreadActivity.this, "更新成功", Toast.LENGTH_SHORT).show();
             }
