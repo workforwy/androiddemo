@@ -50,7 +50,7 @@ public class DownLoadApk {
     private static void start(Context context, String url, String title, String appName) {
         long id = FileDownloadManager.getInstance(context).startDownload(url, title, "下载完成后点击打开", appName);
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
-        sp.edit().putLong(DownloadManager.EXTRA_DOWNLOAD_ID, id).commit();
+        sp.edit().putLong(DownloadManager.EXTRA_DOWNLOAD_ID, id).apply();
         Log.d(TAG, "apk start download " + id);
     }
 

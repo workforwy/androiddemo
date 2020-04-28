@@ -1,8 +1,10 @@
-package com.ceshi.ha.rx;
+package com.ceshi.ha.activity;
 
+import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
@@ -38,12 +40,13 @@ import static java.lang.Thread.sleep;
 
 public class RXActivity extends AppCompatActivity {
     private static final String TAG = "RxJavaTag";
-    private Disposable mDisposable, mDisposable1;
+
     private int[] drawableRes = new int[]{
             R.mipmap.amap_bus, R.mipmap.amap_car, R.mipmap.amap_man, R.mipmap.amap_ride,
             R.mipmap.app_guide_broadcast_nor, R.mipmap.app_guide_map_nor, R.mipmap.app_guide_beauty_nor,
             R.mipmap.app_guide_music_nor, R.mipmap.app_guide_news_nor, R.mipmap.app_guide_note_nor};
 
+    private Disposable mDisposable, mDisposable1;
     ActivityRxBinding binding;
 
     @Override
@@ -51,11 +54,11 @@ public class RXActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityRxBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        rxJavaBaseUse();
+
     }
 
     //RxJava基本使用
-    private void rxJavaBaseUse() {
+    public void rxJavaBaseUse(View view) {
         //被观察者
         Observable obs = Observable.create(new ObservableOnSubscribe<String>() {
             @Override
@@ -63,7 +66,7 @@ public class RXActivity extends AppCompatActivity {
                 emitter.onNext("连载1");
                 emitter.onNext("连载2");
                 emitter.onNext("连载3");
-                //                emitter.onComplete();
+//                emitter.onComplete();
                 emitter.onError(new Throwable("报错了"));
             }
         });
@@ -82,7 +85,7 @@ public class RXActivity extends AppCompatActivity {
                     mDisposable.dispose();
                     return;
                 }
-                Log.e(TAG, "onNext:" + value);
+                Log.e(TAG, "observer:" + value);
             }
 
             @Override
@@ -109,7 +112,7 @@ public class RXActivity extends AppCompatActivity {
                     mDisposable1.dispose();
                     return;
                 }
-                Log.e(TAG, "onNext1:" + value);
+                Log.e(TAG, "observer1:" + value);
             }
 
             @Override
@@ -122,13 +125,14 @@ public class RXActivity extends AppCompatActivity {
                 Log.e(TAG, "onComplete1");
             }
         };
+
         //订阅
         obs.subscribe(observer);
         obs.subscribe(observer1);
     }
 
     //RxJava链式使用
-    private void rxJavaChainUse() {
+    public void rxJavaChainUse(View view) {
         Observable.create(new ObservableOnSubscribe<String>() {
             @Override
             public void subscribe(ObservableEmitter<String> emitter) throws Exception {
@@ -158,44 +162,48 @@ public class RXActivity extends AppCompatActivity {
 
                     @Override
                     public void onComplete() {
-                        Log.e(TAG, "onComplete()");
+                        Log.e(TAG, "onComplete");
                     }
                 });
     }
 
-
     //定时操作
-    private void timeDoSomething() {
+    @SuppressLint("CheckResult")
+    public void timeDoSomething(View view) {
         Observable.create(new ObservableOnSubscribe<Integer>() {
             @Override
             public void subscribe(ObservableEmitter<Integer> emitter) throws Exception {
                 emitter.onNext(123);
-                sleep(3000);
+//                sleep(3000);
                 emitter.onNext(456);
+//                emitter.onComplete();
+                emitter.onError(new Throwable("我想报个错"));
             }
-        }).observeOn(AndroidSchedulers.mainThread())
+        })
+                .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(new Consumer<Integer>() {
                     @Override
                     public void accept(Integer integer) throws Exception {
-                        Log.e(TAG, integer + "");
+                        Log.e(TAG, "Consumer 接收的数据 = " + integer);
                     }
                 }, new Consumer<Throwable>() {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
-                        Log.e(TAG, "accept");
+                        Log.e(TAG, "Consumer 接收的  throwable  =  " + throwable);
                     }
                 }, new Action() {
                     @Override
                     public void run() throws Exception {
-                        Log.e(TAG, "Action");
+                        Log.e(TAG, "Consumer 下一步继续操作 Action");
+
                     }
                 });
 
     }
 
-    //
-    private void complicatedDoSomething(final int[] drawableRes) {
+    @SuppressLint("CheckResult")
+    public void complicatedDoSomething(View view) {
         Observable.create(new ObservableOnSubscribe<Drawable>() {
             @Override
             public void subscribe(ObservableEmitter<Drawable> emitter) throws Exception {
@@ -203,12 +211,12 @@ public class RXActivity extends AppCompatActivity {
                     Drawable drawable = getResources().getDrawable(drawableRes[i]);
                     //第6个图片延时3秒后架子
                     if (i == 5) {
-                        sleep(3000);
+                        sleep(10000);
                     }
                     //复制第7张图片到sd卡
                     if (i == 6) {
                         Bitmap bitmap = ((BitmapDrawable) drawable).getBitmap();
-                        saveBitmap(bitmap, "test.png", Bitmap.CompressFormat.PNG);
+                        saveBitmap(bitmap);
                     }
                     //上传到网络
                     if (i == 7) {
@@ -217,65 +225,39 @@ public class RXActivity extends AppCompatActivity {
                     emitter.onNext(drawable);
                 }
             }
-        }).subscribeOn(Schedulers.io())
+        })
+                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<Drawable>() {
                     @Override
                     public void accept(Drawable drawable) throws Exception {
                         //回调后在UI界面上展示出来
+                        binding.ivIcon.setImageDrawable(drawable);
                     }
                 });
     }
 
     private void updateIcon(Drawable drawable) {
-        binding.lvData.setAdapter(new BaseAdapter() {
-            @Override
-            public int getCount() {
-                return drawableRes.length;
-            }
-
-            @Override
-            public Object getItem(int position) {
-                return drawableRes[position];
-            }
-
-            @Override
-            public long getItemId(int position) {
-                return position;
-            }
-
-            @Override
-            public View getView(int position, View convertView, ViewGroup parent) {
-                ImageView imageView = new ImageView(RXActivity.this);
-                imageView.setImageResource((int) getItem(position));
-                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(50, 50);
-                imageView.setLayoutParams(params);
-                return imageView;
-            }
-        });
+        Log.e(TAG, "上传成功");
     }
 
+    public void saveBitmap(Bitmap bitmap) {
+        Log.e(TAG, "保存成功");
+    }
 
-    /**
-     * 将Bitmap以指定格式保存到指定路径
-     *
-     * @param bitmap
-     * @param name
-     */
-    public void saveBitmap(Bitmap bitmap, String name, Bitmap.CompressFormat format) {
-        // 创建一个位于SD卡上的文件
-        File file = new File(Environment.getExternalStorageDirectory(),
-                name);
-        FileOutputStream out = null;
-        try {
-            // 打开指定文件输出流
-            out = new FileOutputStream(file);
-            // 将位图输出到指定文件
-            bitmap.compress(format, 100,
-                    out);
-            out.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    @SuppressLint("CheckResult")
+    public void testArray(View view) {
+        binding.textView2.setText("");
+        String[] names = {"Hello", "Hi", "Aloha"};
+        Observable
+                .fromArray(names)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<String>() {
+                    @Override
+                    public void accept(String s) throws Exception {
+                        binding.textView2.setText(s);
+                    }
+                });
     }
 }

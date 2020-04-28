@@ -43,17 +43,15 @@
         <activity android:name=".activity.TakePhotoActivity" />
         <activity android:name=".activity.HandlerActivity" />
         <activity android:name=".activity.ListActivity" />
-
+        <activity android:name=".activity.MvpActivity" />
+        <activity android:name=".activity.WebViewActivity" />
+        <activity android:name=".activity.RXActivity" />
         <activity
             android:name=".activity.BroadcastActivity"
             android:launchMode="singleTask" />
 
-
-        <activity android:name=".activity.MvpActivity" />
-        <activity android:name=".activity.WebViewActivity" />
-        <activity android:name=".rx.RXActivity" />
-
         <service android:name=".service.BackService" />
+        <service android:name=".service.WorkService" />
 
         <receiver
             android:name=".activity.BroadcastActivity$MyReceiver"

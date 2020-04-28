@@ -1,11 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.RXActivity">
 
-    <ListView
-        android:id="@+id/lv_data"
+    <Button
+        android:id="@+id/rxJavaBaseUse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="rxJavaBaseUse"
+        android:text="rxJavaBaseUse"
+        tools:layout_editor_absoluteX="28dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <Button
+        android:id="@+id/timeDoSomething"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="timeDoSomething"
+        android:text="timeDoSomething"
+        tools:layout_editor_absoluteX="28dp"
+        tools:layout_editor_absoluteY="112dp" />
+
+    <Button
+        android:id="@+id/rxJavaChainUse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="rxJavaChainUse"
+        android:text="rxJavaChainUse"
+        tools:layout_editor_absoluteX="28dp"
+        tools:layout_editor_absoluteY="64dp" />
+    <Button
+        android:id="@+id/complicatedDoSomething"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="complicatedDoSomething"
+        android:text="complicatedDoSomething"
+        tools:layout_editor_absoluteX="28dp"
+        tools:layout_editor_absoluteY="64dp" />
+
+    <ImageView
+        android:id="@+id/iv_icon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timeDoSomething">
+
+    </ImageView>
+
+    <TextView
+        android:id="@+id/textView2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content"
+        android:text="TextView" />
+
+    <Button
+        android:id="@+id/testArray"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="testArray"
+        android:text="testArray" />
 
 </LinearLayout>

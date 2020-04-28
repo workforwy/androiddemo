@@ -30,7 +30,6 @@ public class BackService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         //执行耗时操作
-
         mThread = new Thread() {
             @Override
             public void run() {
@@ -38,7 +37,7 @@ public class BackService extends Service {
                     while (true) {
                         //等待停止线程
                         if (this.isInterrupted()) {
-                            throw new InterruptedException();
+                            throw new InterruptedException("线程被停止了");
                         }
                         //耗时操作。
                         System.out.println("执行耗时操作");

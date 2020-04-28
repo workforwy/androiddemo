@@ -20,7 +20,7 @@ import com.ceshi.ha.activity.ThreadActivity;
 import com.ceshi.ha.adapter.RecycleAdapter;
 import com.ceshi.ha.bean.User;
 import com.ceshi.ha.databinding.ActivityMainBinding;
-import com.ceshi.ha.rx.RXActivity;
+import com.ceshi.ha.activity.RXActivity;
 
 import java.util.ArrayList;
 import java.util.List;
