@@ -5,7 +5,6 @@ import android.app.Application;
 import android.content.Intent;
 
 import com.blankj.utilcode.util.CrashUtils;
-import com.ceshi.ha.activity.MvpActivity;
 import com.qmuiteam.qmui.arch.QMUISwipeBackActivityManager;
 
 import java.util.ArrayList;
@@ -39,11 +38,6 @@ public class MyApplication extends Application {
         for (Activity activity : activityList) {
             activity.finish();
         }
-    }
-
-    public void stopAppByIntent() {
-        Intent intent = new Intent(this, MvpActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
     }
 
     /**

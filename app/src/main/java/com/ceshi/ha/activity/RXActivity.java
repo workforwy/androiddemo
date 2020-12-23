@@ -4,28 +4,15 @@ import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.nfc.Tag;
 import android.os.Bundle;
-import android.os.Environment;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.ceshi.ha.R;
 import com.ceshi.ha.databinding.ActivityRxBinding;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;

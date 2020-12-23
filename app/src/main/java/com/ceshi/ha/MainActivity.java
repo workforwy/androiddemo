@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.ceshi.ha.activity.BroadcastActivity;
 import com.ceshi.ha.activity.HandlerActivity;
 import com.ceshi.ha.activity.ListActivity;
-import com.ceshi.ha.activity.MvpActivity;
+import com.ceshi.ha.activity.RetrofitActivity;
 import com.ceshi.ha.activity.WebViewActivity;
 import com.ceshi.ha.activity.TabActivity;
 import com.ceshi.ha.activity.TakePhotoActivity;
@@ -51,9 +51,6 @@ public class MainActivity extends BaseActivity {
             public void onItemClick(View view, int position) {
                 Intent intent = new Intent(MainActivity.this, getData().get(position));
                 startActivity(intent);
-//
-//                QMUIBottomSheet sheet = new QMUIBottomSheet(MainActivity.this);
-//                sheet.show();
             }
         });
         mRecyclerView.setAdapter(mAdapter);
@@ -64,12 +61,12 @@ public class MainActivity extends BaseActivity {
         mDatas.add(BroadcastActivity.class);
         mDatas.add(HandlerActivity.class);
         mDatas.add(ListActivity.class);
-        mDatas.add(MvpActivity.class);
         mDatas.add(ThreadActivity.class);
         mDatas.add(WebViewActivity.class);
         mDatas.add(TabActivity.class);
         mDatas.add(TakePhotoActivity.class);
         mDatas.add(RXActivity.class);
+        mDatas.add(RetrofitActivity.class);
         return mDatas;
     }
 

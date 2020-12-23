@@ -1,25 +1,29 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.jakewharton.butterknife'
 
-def qmui_arch_version = '2.0.0-alpha04'
+def qmui_arch_version = ''
 
 android {
-    compileSdkVersion 28
+
+    compileSdkVersion 29
     defaultConfig {
         applicationId "com.ceshi.ha"
         minSdkVersion 21
-        targetSdkVersion 28
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        signingConfig signingConfigs.debug
+
+        manifestPlaceholders = [
+                JPUSH_PKGNAME: applicationId,
+                JPUSH_APPKEY : "7b1ceb56dab2082d2bd1dbdb", //JPush 上注册的包名对应的 Appkey.
+                JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
+        ]
     }
 
-    viewBinding {
-        enabled = true
-    }
-
-    dataBinding {
-        enabled = true
+    buildFeatures {
+        dataBinding = true
+        viewBinding = true
     }
 
     //配置签名信息
@@ -67,7 +71,7 @@ android {
     //}
 
     // 配置不同风格的APP，在buildTypes的基础上还可以让每一个类型的APP拥有不同的风格，所以最终打出的APK的数量就是buildTypes乘以productFlavors
-    productFlavors{
+    productFlavors {
 
 //        online{
 //
@@ -78,42 +82,49 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
+    //noinspection GradleCompatible
     implementation 'com.android.support:appcompat-v7:28.0.0'
-    implementation 'com.android.support:cardview-v7:28.0.0'
-    implementation 'com.android.support.constraint:constraint-layout:2.0.0-beta4'
-    implementation 'com.android.support:recyclerview-v7:28.0.0'
+    implementation 'com.google.android.material:material:1.3.0-alpha04'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+
     // 单元测试
-    testImplementation 'junit:junit:4.13'
+    testImplementation 'junit:junit:4.13.1'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
 
-    // 注解模块
-    implementation 'com.jakewharton:butterknife:10.2.1'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.1'
     //网络
-    implementation 'org.xutils:xutils:3.5.0'
-    implementation 'com.squareup.okhttp3:okhttp:4.4.0'
-//    implementation 'com.squareup.retrofit2:retrofit:2.7.0'
-    implementation 'eu.the4thfloor.volley:com.android.volley:2015.05.28'
+    implementation 'org.xutils:xutils:3.9.0'
+    implementation 'com.squareup.okhttp3:okhttp:4.7.2'
+    implementation 'com.squareup.retrofit2:retrofit:2.7.0'
+
     //动画
     implementation 'com.github.Jerey-Jobs:AnimationHelper:1.0'
+
     // 图片加载
     implementation 'com.squareup.picasso:picasso:2.71828'
+    implementation 'eu.the4thfloor.volley:com.android.volley:2015.05.28'
+
     // 沉浸式状态栏和标题栏
     implementation 'com.gyf.barlibrary:barlibrary:2.3.0'
+
     // 事件传递
     implementation 'org.greenrobot:eventbus:3.0.0'
-    // 屏幕适配模块
-    implementation 'com.zhy:autolayout:1.4.5'
+
     // 工具类
-    implementation 'com.blankj:utilcode:1.26.0'
+    implementation 'com.blankj:utilcode:1.29.0'
+
     // rxJava
-    implementation 'io.reactivex.rxjava2:rxjava:2.1.0'
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.2'
     implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
+
     // Qmui
     implementation 'com.qmuiteam:qmui:2.0.0-alpha04'
-    implementation "com.qmuiteam:arch:$qmui_arch_version"
-    annotationProcessor "com.qmuiteam:arch-compiler:$qmui_arch_version" // use annotationProcessor if java
+    implementation "com.qmuiteam:arch:2.0.0-alpha04"
+    annotationProcessor "com.qmuiteam:arch-compiler:2.0.0-alpha04"
 
-    implementation 'com.blankj:utilcode:1.26.0'
+    // jpush
+    implementation 'cn.jiguang.sdk:jpush:3.6.6'  // 此处以JPush 3.6.6 版本为例。
+    implementation 'cn.jiguang.sdk:jcore:2.3.8'  // 此处以JCore 2.3.8 版本为例。
+
+    implementation 'com.lxj:xpopup:2.1.4'
 }
 
