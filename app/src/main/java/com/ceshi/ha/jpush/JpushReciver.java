@@ -1,4 +1,4 @@
-package com.ceshi.ha;
+package com.ceshi.ha.jpush;
 
 import cn.jpush.android.service.JPushMessageReceiver;
 

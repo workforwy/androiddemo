@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE contact SYSTEM "/Users/wangyong/AndroidStudioProjects/AndroidDemo/app/src/main/java/xml/contact.dtd">
+<!-- 定义一个根元素 -->
+<contact>
+    <phone>139</phone>
+    <name>A</name>
+    <email>A@t.com</email>
+</contact>

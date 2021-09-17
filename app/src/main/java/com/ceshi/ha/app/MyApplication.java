@@ -1,10 +1,11 @@
-package com.ceshi.ha;
+package com.ceshi.ha.app;
 
 import android.app.Activity;
 import android.app.Application;
 import android.content.Intent;
 
 import com.blankj.utilcode.util.CrashUtils;
+import com.ceshi.ha.BuildConfig;
 import com.qmuiteam.qmui.arch.QMUISwipeBackActivityManager;
 
 import java.util.ArrayList;

@@ -3,9 +3,8 @@ package com.ceshi.ha.activity;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 
-import com.ceshi.ha.BaseActivity;
+import com.ceshi.ha.base.BaseActivity;
 import com.ceshi.ha.R;
 
 import java.io.IOException;

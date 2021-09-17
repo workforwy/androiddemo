@@ -3,6 +3,7 @@ package com.ceshi.ha.bean;
 import java.util.List;
 
 public class Student {
+
     public Student(List<Course> courses) {
         this.courses = courses;
     }
@@ -17,15 +18,4 @@ public class Student {
         this.courses = courses;
     }
 
-    public class Course {
-        private String name;
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-    }
 }

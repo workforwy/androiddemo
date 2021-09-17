@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<books type="english">
+    <book>
+        <name>A</name>
+        <price>100</price>
+    </book>
+    <book>
+        <name>B</name>
+        <price>200</price>
+    </book>
+</books>

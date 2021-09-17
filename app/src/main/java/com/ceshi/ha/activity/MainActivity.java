@@ -1,4 +1,4 @@
-package com.ceshi.ha;
+package com.ceshi.ha.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,18 +9,13 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.ceshi.ha.activity.BroadcastActivity;
-import com.ceshi.ha.activity.HandlerActivity;
-import com.ceshi.ha.activity.ListActivity;
-import com.ceshi.ha.activity.RetrofitActivity;
-import com.ceshi.ha.activity.WebViewActivity;
-import com.ceshi.ha.activity.TabActivity;
-import com.ceshi.ha.activity.TakePhotoActivity;
-import com.ceshi.ha.activity.ThreadActivity;
 import com.ceshi.ha.adapter.RecycleAdapter;
+import com.ceshi.ha.base.BaseActivity;
 import com.ceshi.ha.bean.User;
 import com.ceshi.ha.databinding.ActivityMainBinding;
-import com.ceshi.ha.activity.RXActivity;
+import com.ceshi.ha.reflect.ReflectDemo;
+import com.ceshi.ha.reflect.ReflectDemo2;
+import com.ceshi.ha.reflect.ReflectDemo3;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -67,6 +62,10 @@ public class MainActivity extends BaseActivity {
         mDatas.add(TakePhotoActivity.class);
         mDatas.add(RXActivity.class);
         mDatas.add(RetrofitActivity.class);
+
+        mDatas.add(ReflectDemo.class);
+        mDatas.add(ReflectDemo2.class);
+        mDatas.add(ReflectDemo3.class);
         return mDatas;
     }
 

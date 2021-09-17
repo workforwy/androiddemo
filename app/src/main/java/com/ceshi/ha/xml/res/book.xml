@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<book type="english">
+    <!-- 这是书的序号 -->
+    <id>sn001</id>
+    <!-- 这是书的名字 -->
+    <!-- 
+    <name>A</name>
+    <name>&lt;Core Java&gt;</name>
+    -->
+    <name><![CDATA[<corejava>]]></name>
+</book>

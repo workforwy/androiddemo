@@ -24,7 +24,7 @@
     <uses-permission android:name="android.permission.BROADCAST_STICKY" />
 
     <application
-        android:name=".MyApplication"
+        android:name=".app.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -32,11 +32,8 @@
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
 
-        <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+        <activity android:name=".activity.MainActivity">
+
         </activity>
         <activity android:name=".activity.ThreadActivity" />
         <activity android:name=".activity.TabActivity" />
@@ -49,6 +46,14 @@
             android:name=".activity.BroadcastActivity"
             android:launchMode="singleTask" />
         <activity android:name=".activity.RetrofitActivity" />
+
+        <activity android:name=".activity.InnerActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.ContactsActivity" />
 
         <service android:name=".service.BackService" />
 
@@ -64,7 +69,8 @@
         <!-- Since JCore2.0.0 Required SDK核心功能-->
         <!-- 可配置android:process参数将Service放在其他进程中；android:enabled属性不能是false -->
         <!-- 这个是自定义Service，要继承极光JCommonService，可以在更多手机平台上使得推送通道保持的更稳定 -->
-        <service android:name=".JpushService"
+        <service
+            android:name=".jpush.JpushService"
             android:enabled="true"
             android:exported="false"
             android:process=":pushcore">
@@ -78,9 +84,9 @@
         <!-- 3.3.0开始所有事件将通过该类回调 -->
         <!-- 该广播需要继承 JPush 提供的 JPushMessageReceiver 类, 并如下新增一个 Intent-Filter -->
         <receiver
-            android:name='.JpushReciver'
+            android:name='.jpush.JpushReciver'
             android:enabled="true"
-            android:exported="false" >
+            android:exported="false">
             <intent-filter>
                 <action android:name="cn.jpush.android.intent.RECEIVE_MESSAGE" />
                 <category android:name="您应用的包名" />

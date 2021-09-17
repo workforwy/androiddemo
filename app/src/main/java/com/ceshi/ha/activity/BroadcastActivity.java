@@ -4,22 +4,14 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.os.PersistableBundle;
-import android.text.BoringLayout;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.ToastUtils;
-import com.ceshi.ha.MainActivity;
-import com.ceshi.ha.R;
 import com.ceshi.ha.databinding.ActivityReceiverBinding;
 
 /**

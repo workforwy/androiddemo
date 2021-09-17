@@ -1,7 +1,7 @@
 package com.ceshi.ha.adapter;
 
-import com.ceshi.ha.adapter.baseadapter.AdapterDelegate;
-import com.ceshi.ha.adapter.baseadapter.BaseViewHolder;
+import com.ceshi.ha.base.adapter.AdapterDelegate;
+import com.ceshi.ha.base.adapter.BaseViewHolder;
 import com.ceshi.ha.bean.BaseModel;
 import com.ceshi.ha.bean.Message2;
 

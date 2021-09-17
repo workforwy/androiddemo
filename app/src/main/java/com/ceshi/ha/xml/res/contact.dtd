@@ -1,0 +1,5 @@
+<!--<!ELEMENT contact (phone,name,email)>-->
+<!--    <!ELEMENT phone (#PCDATA)>-->
+<!--    <!ELEMENT name (#PCDATA)>-->
+<!--    <!ELEMENT email (#PCDATA)>-->
+<!--</ELEMENT>-->

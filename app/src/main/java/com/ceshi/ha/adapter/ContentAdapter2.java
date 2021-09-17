@@ -6,8 +6,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.ceshi.ha.R;
-import com.ceshi.ha.adapter.baseadapter.BaseViewHolder;
-import com.ceshi.ha.adapter.baseadapter.CommonAdapter;
+import com.ceshi.ha.base.adapter.BaseViewHolder;
+import com.ceshi.ha.base.adapter.CommonAdapter;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.ceshi.ha.adapter.baseadapter;
+package com.ceshi.ha.base.adapter;
 
 
 import androidx.annotation.NonNull;

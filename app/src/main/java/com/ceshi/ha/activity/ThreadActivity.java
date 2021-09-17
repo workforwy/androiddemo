@@ -1,17 +1,12 @@
 package com.ceshi.ha.activity;
 
 import android.annotation.SuppressLint;
-import android.app.LauncherActivity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import com.ceshi.ha.BaseActivity;
-import com.ceshi.ha.R;
+import com.ceshi.ha.base.BaseActivity;
 import com.ceshi.ha.databinding.ActivityThreadBinding;
 
 import java.util.concurrent.Callable;
