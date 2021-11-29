@@ -24,7 +24,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import com.ceshi.ha.R;
+import com.ceshi.ha.base.BaseActivity;
 import com.ceshi.ha.databinding.ActivityTakephotoBinding;
+import com.squareup.picasso.Picasso;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -34,7 +36,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-public class TakePhotoActivity extends AppCompatActivity {
+public class TakePhotoActivity extends BaseActivity {
 
     public static final int PHOTO_REQUEST_CAREMA = 1;// 拍照
     public static final int CROP_PHOTO = 2;
@@ -46,8 +48,10 @@ public class TakePhotoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding= ActivityTakephotoBinding.inflate(getLayoutInflater());
+        binding = ActivityTakephotoBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(),R.mipmap.main_logo);
+        binding.imageView.setImageBitmap(bitmap);
     }
 
     public void takePhoto(View view) {
@@ -61,8 +65,7 @@ public class TakePhotoActivity extends AppCompatActivity {
                 ContentValues contentValues = new ContentValues(1);
                 contentValues.put(MediaStore.Images.Media.DATA, file.getAbsolutePath());
                 //检查是否有存储权限，以免崩溃
-                if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                        != PackageManager.PERMISSION_GRANTED) {
+                if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
                     //申请WRITE_EXTERNAL_STORAGE权限
                     Toast.makeText(this, "请开启存储权限", Toast.LENGTH_SHORT).show();
                     return;
@@ -106,8 +109,7 @@ public class TakePhotoActivity extends AppCompatActivity {
             case CROP_PHOTO:
                 if (resultCode == RESULT_OK) {
                     try {
-                        Bitmap bitmap = BitmapFactory.decodeStream(getContentResolver()
-                                .openInputStream(imageUri));
+                        Bitmap bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(imageUri));
                         binding.imageView.setImageBitmap(bitmap);
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();

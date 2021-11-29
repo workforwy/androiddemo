@@ -10,7 +10,8 @@
     <uses-permission android:name="android.permission.NFC" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
@@ -31,9 +32,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-
         <activity android:name=".activity.MainActivity">
-
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".activity.ThreadActivity" />
         <activity android:name=".activity.TabActivity" />
@@ -46,14 +49,10 @@
             android:name=".activity.BroadcastActivity"
             android:launchMode="singleTask" />
         <activity android:name=".activity.RetrofitActivity" />
-
-        <activity android:name=".activity.InnerActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".activity.InnerActivity" />
         <activity android:name=".activity.ContactsActivity" />
+        <activity android:name=".reflect.ReflectDemo2" />
+        <activity android:name=".reflect.ReflectDemo3" />
 
         <service android:name=".service.BackService" />
 
