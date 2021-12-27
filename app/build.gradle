@@ -126,5 +126,8 @@ dependencies {
     implementation 'cn.jiguang.sdk:jcore:2.3.8'  // 此处以JCore 2.3.8 版本为例。
 
     implementation 'com.lxj:xpopup:2.1.4'
+
+    implementation 'com.hacknife.briefness:briefness:2.0.5'
+    annotationProcessor 'com.hacknife.briefness:briefness-compiler:2.0.5'
 }
 
