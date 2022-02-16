@@ -4,13 +4,13 @@
         <rotate
             android:drawable="@mipmap/spinner_big_inner"
             android:fromDegrees="1080"
-            android:toDegrees="0"/>
+            android:toDegrees="0" />
     </item>
 
     <item>
         <rotate
             android:drawable="@mipmap/spinner_big_outer"
             android:fromDegrees="0"
-            android:toDegrees="720"/>
+            android:toDegrees="720" />
     </item>
 </layer-list>

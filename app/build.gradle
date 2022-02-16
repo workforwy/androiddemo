@@ -129,5 +129,7 @@ dependencies {
 
     implementation 'com.hacknife.briefness:briefness:2.0.5'
     annotationProcessor 'com.hacknife.briefness:briefness-compiler:2.0.5'
+
+    implementation "io.github.freddychen:shine-java:0.0.8"
 }
 
