@@ -1,4 +1,4 @@
-package db;
+package com.ceshi.ha.db;
 
 import android.annotation.SuppressLint;
 import android.content.ContentValues;
@@ -11,7 +11,7 @@ import android.database.sqlite.SQLiteDatabase.CursorFactory;
 
 public class DBAdapter {
 
-    private static final String DB_NAME = "student.db";
+    private static final String DB_NAME = "student.com.ceshi.ha.db";
     private static final String DB_TABLE = "peopleinfo";
     private static final int DB_VERSION = 1;
 

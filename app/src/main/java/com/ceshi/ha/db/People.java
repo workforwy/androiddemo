@@ -1,4 +1,4 @@
-package db;
+package com.ceshi.ha.db;
 
 public class People {
     public int ID = -1;
