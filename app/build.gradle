@@ -1,14 +1,15 @@
 apply plugin: 'com.android.application'
 
-def qmui_arch_version = ''
+def qmui_arch_version = '2.0.0-alpha10'
 
 android {
 
-    compileSdkVersion 29
+    compileSdkVersion 33
+
     defaultConfig {
         applicationId "com.ceshi.ha"
         minSdkVersion 21
-        targetSdkVersion 29
+        targetSdkVersion 33
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -110,7 +111,7 @@ dependencies {
     implementation 'org.greenrobot:eventbus:3.2.0'
 
     // 工具类
-    implementation 'com.blankj:utilcode:1.30.6'
+    implementation 'com.blankj:utilcodex:1.31.1'
 
     // rxJava
     implementation 'io.reactivex.rxjava2:rxjava:2.2.21'
@@ -118,8 +119,8 @@ dependencies {
 
     // Qmui
     implementation 'com.qmuiteam:qmui:2.0.1'
-    implementation "com.qmuiteam:arch:2.0.0-alpha04"
-    annotationProcessor "com.qmuiteam:arch-compiler:2.0.0-alpha04"
+    implementation "com.qmuiteam:arch:$qmui_arch_version"
+    annotationProcessor "com.qmuiteam:arch-compiler:$qmui_arch_version" // use annotationProcessor if java
 
     // jpush
     implementation 'cn.jiguang.sdk:jpush:3.6.6'  // 此处以JPush 3.6.6 版本为例。

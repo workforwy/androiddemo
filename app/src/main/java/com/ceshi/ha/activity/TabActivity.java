@@ -1,34 +1,13 @@
 package com.ceshi.ha.activity;
 
-import android.graphics.Color;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.TabHost;
-import android.widget.TabWidget;
-import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.fragment.app.FragmentTabHost;
-import androidx.viewpager.widget.PagerAdapter;
 
-import com.ceshi.ha.R;
 import com.ceshi.ha.databinding.ActivityTabBinding;
 import com.ceshi.ha.fragment.Fragment_Home;
 import com.ceshi.ha.fragment.Fragment_Main;
 import com.ceshi.ha.fragment.Fragment_My;
-import com.qmuiteam.qmui.arch.QMUIFragment;
-import com.qmuiteam.qmui.arch.QMUIFragmentPagerAdapter;
-import com.qmuiteam.qmui.widget.QMUIPagerAdapter;
-import com.qmuiteam.qmui.widget.tab.QMUITab;
-import com.qmuiteam.qmui.widget.tab.QMUITabSegment;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created on 2018/3/10 0010 11:17.
