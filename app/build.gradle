@@ -1,6 +1,6 @@
 apply plugin: 'com.android.application'
 
-def qmui_arch_version = '2.0.0-alpha10'
+def qmui_arch_version = '2.1.0'
 
 android {
 
@@ -79,14 +79,15 @@ android {
 //        }
 
     }
+    namespace 'com.ceshi.ha'
 }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     //noinspection GradleCompatible
     implementation 'com.android.support:appcompat-v7:28.0.0'
-    implementation 'com.google.android.material:material:1.4.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.0'
+    implementation 'com.google.android.material:material:1.5.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
 
     // 单元测试
     testImplementation 'junit:junit:4.13.2'
@@ -94,7 +95,7 @@ dependencies {
 
     //网络
     implementation 'org.xutils:xutils:3.9.0'
-    implementation 'com.squareup.okhttp3:okhttp:4.9.2'
+    implementation 'com.squareup.okhttp3:okhttp:5.0.0-alpha.11'
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
 
     //动画
@@ -108,7 +109,7 @@ dependencies {
     implementation 'com.gyf.barlibrary:barlibrary:2.3.0'
 
     // 事件传递
-    implementation 'org.greenrobot:eventbus:3.2.0'
+    implementation 'org.greenrobot:eventbus:3.3.1'
 
     // 工具类
     implementation 'com.blankj:utilcodex:1.31.1'
@@ -118,13 +119,13 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
 
     // Qmui
-    implementation 'com.qmuiteam:qmui:2.0.1'
+    implementation 'com.qmuiteam:qmui:2.1.0'
     implementation "com.qmuiteam:arch:$qmui_arch_version"
     annotationProcessor "com.qmuiteam:arch-compiler:$qmui_arch_version" // use annotationProcessor if java
 
     // jpush
-    implementation 'cn.jiguang.sdk:jpush:3.6.6'  // 此处以JPush 3.6.6 版本为例。
-    implementation 'cn.jiguang.sdk:jcore:2.3.8'  // 此处以JCore 2.3.8 版本为例。
+    implementation 'cn.jiguang.sdk:jpush:5.0.3'  // 此处以JPush 3.6.6 版本为例。
+    implementation 'cn.jiguang.sdk:jcore:4.2.3'  // 此处以JCore 2.3.8 版本为例。
 
     implementation 'com.lxj:xpopup:2.1.4'
 
