@@ -9,8 +9,8 @@ import androidx.annotation.Nullable;
 
 import com.blankj.utilcode.util.LogUtils;
 import com.ceshi.ha.R;
-import com.gyf.barlibrary.ImmersionBar;
-import com.gyf.barlibrary.OnKeyboardListener;
+import com.gyf.immersionbar.ImmersionBar;
+import com.gyf.immersionbar.OnKeyboardListener;
 import com.qmuiteam.qmui.arch.QMUIActivity;
 
 public abstract class BaseActivity extends QMUIActivity {
@@ -53,7 +53,7 @@ public abstract class BaseActivity extends QMUIActivity {
                 .removeSupportAllView() //移除全部 view 支持
                 .navigationBarEnable(true)   //是否可以修改导航栏颜色，默认为 true
                 .navigationBarWithKitkatEnable(true)  //是否可以修改安卓 4.4 和 emui3.1 手机导航栏颜色，默认为 true
-                .fixMarginAtBottom(true)   //已过时，当 xml 里使用 android:fitsSystemWindows="true"属性时,解决 4.4 和 emui3.1 手机底部有时会出现多余空白的问题，默认为 false，非必须
+                .barEnable(true)   //已过时，当 xml 里使用 android:fitsSystemWindows="true"属性时,解决 4.4 和 emui3.1 手机底部有时会出现多余空白的问题，默认为 false，非必须
                 .addTag("tag")  //给以上设置的参数打标记
                 .getTag("tag")  //根据 tag 获得沉浸式参数
                 .reset()  //重置所以沉浸式参数
@@ -72,8 +72,10 @@ public abstract class BaseActivity extends QMUIActivity {
     protected void onDestroy() {
         super.onDestroy();
         //必须调用该方法，防止内存泄漏，不调用该方法，如果界面bar发生改变，在不关闭app的情况下，退出此界面再进入将记忆最后一次bar改变的状态
-        if (mImmersionBar != null)
-            mImmersionBar.destroy();
+        if (mImmersionBar != null){
+            //            mImmersionBar.destroy();
+        }
+
     }
 
     @Override
